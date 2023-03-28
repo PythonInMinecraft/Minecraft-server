@@ -1,0 +1,18 @@
+body
+{
+    background-color: blue;
+}
+
+alert
+{
+    color: red;
+    background-color: white;
+}
+
+h1{
+    color:black;
+    background-color: yellow;
+    border-color: black;
+    border-width: 4px;
+    border-style: double;
+}
