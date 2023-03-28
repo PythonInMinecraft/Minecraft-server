@@ -1,2 +1,7 @@
 # Minecraft-server
-A custom Minecraft server in Python 3 for everypeole !
+A Minecraft custom server in Python 3 (experimental, help required)
+## Depend
+Depends : 
+YML Lib (see my repo for details)
+# You can become collaborator to this project !
+For become collaborator, create an issue with the template "I want to be contributor" and if "fixed" you're now a collaborator
