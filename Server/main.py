@@ -1,6 +1,5 @@
 """A Minecraft server in python 3"""
-from socket import *
-from time import *
+from classes.server.server import MinecraftServer
 
 if __name__ == "__main__":
     print("""
@@ -12,3 +11,4 @@ if __name__ == "__main__":
     _________________________________________________
     """)
     print("Launching Minecraft server...")
+    ...
