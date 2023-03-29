@@ -14,4 +14,29 @@ class MinecraftServer(object):
 
     def start(self):
         """Launch the server"""
-        ...
+        self.load_world()
+
+    def load_world(self):
+        """Load the worlds of the server
+        THIS SECTION MUST HAVE CONTRIBUTORS !"""
+
+    def open(self):
+        """Open the server to clients"""
+        self.socket.bind()
+        
+
+#class Listener(object):
+#    """The listener of the server"""
+#    LISTEN = False
+#
+#    def start(self):
+#        """Start listening"""
+#        self.LISTEN = True
+#
+#    def stop(self):
+#        """Stop listening"""
+#        self.LISTEN = False
+#
+#    def event(self, event):
+#        """???"""
+
