@@ -1,5 +1,5 @@
 """A Minecraft server in python 3"""
-from classes.server.server import MinecraftServer
+from classes.server.server import MinecraftServer as Server
 
 if __name__ == "__main__":
     print("""
@@ -11,4 +11,5 @@ if __name__ == "__main__":
     _________________________________________________
     """)
     print("Launching Minecraft server...")
-    ...
+    mc_server = Server()
+    mc_server.start()
