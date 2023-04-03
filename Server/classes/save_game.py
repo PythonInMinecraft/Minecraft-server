@@ -12,7 +12,7 @@ class Save(object):
     def encode(self, data):
         """Encode datas chunks / chuncks"""
         final = ""
-        for chunk in self.data:
+        for chunk in data:
             #Save a chunk (16/16/16 blocks)
             c = chunk[0]        #C is a dictionnary : c is like this : {"x":00, "y":00, "z":00}
             final += "{0};{1};{2}{".format(c["x"], c["y"], c["z"])
