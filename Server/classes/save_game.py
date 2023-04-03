@@ -22,4 +22,4 @@ class Save(object):
                 final += ";"
             final = final[:-1]
             final += "};"
-        return None
+        return final
