@@ -1,11 +1,11 @@
 """Save the game"""
 
 class Save(object):
-    """Save the game"""
+    """Save a world. File extention should be .mcpysrv"""
     BLOCKS = {"minecraft:air":0, "minecraft:grass_block":1, "minecraft:dirt":2, "minecraft:stone":3, "minecraft:cobble_stone":4}
 
     def __init__(self, file, data):
-        """Save the game"""
+        """Save a world"""
         with open(file, "w") as file:
             file.write(self.encode(data))
 
