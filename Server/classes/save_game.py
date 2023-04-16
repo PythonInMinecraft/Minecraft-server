@@ -1,4 +1,4 @@
-"""Save the game"""
+"""Save a world"""
 
 class Save(object):
     """Save a world. File extention should be .mcpysrv"""
