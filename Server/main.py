@@ -5,8 +5,8 @@ if __name__ == "__main__":
     print("""
     _________________________________________________
                 Minecraft server in Python 3
-                    Created by FewerTeam
-                   (github.com/FewerTeam)
+                    Created by FewerElk
+                   (github.com/FewerElk)
     If you have an issue please report it in GitHub !
     _________________________________________________
     """)
