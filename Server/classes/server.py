@@ -6,11 +6,24 @@
 #################################################
 #################################################
 """
-from time import *
-from threading import Thread
-from socket_classes import *
-from filing.save_game import Save as Saver
-from filing.open_game import Open as Opener
+# Externals librairies
+try:
+    from time import *
+    from threading import Thread
+    from socket import *
+except ModuleNotFoundError:
+    try:
+        import classes.errors.errors as errors
+    except:
+        raise RuntimeError("FATAL ERROR. PLEASE REINSTALL THIS REPO OR SET A NEW ISSUE ON GITHUB !")
+    raise errors.DependenciesError("""You have to have this librairies installed on your computer :
+--> time
+--> threading
+--> socket
+--> and more""")
+# Internals files
+from classes.filing.save_game import Save as Saver
+from classes.filing.open_game import Open as Opener
 
 class MinecraftServer(object):
     """Class of the Minecraft server"""
@@ -54,3 +67,14 @@ class MinecraftServer(object):
 #    def event(self, event):
 #        """???"""
 
+class MinecraftSocketServerGestionner(object):
+    """The gestionner of the sockets of the server"""
+    def __init__(self, addr="", port=25565):
+        """Constructor"""
+        self.addr = addr
+        self.port = port
+        self.socket = socket(AF_INET, SOCK_STREAM)      #Good args ?
+
+    def bind(self):
+        """Bind the server"""
+        self.socket.bind((self.addr, self.port))
