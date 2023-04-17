@@ -2,14 +2,15 @@
 """
 #################################################
 #################################################
-##############HELP WANTED########################
+############# HELP WANTED #######################
 #################################################
 #################################################
 """
 from time import *
 from threading import Thread
-from Server.classes.server.socket_classes import *
-from Server.classes.save_game import Save as Saver
+from socket_classes import *
+from filing.save_game import Save as Saver
+from filing.open_game import Open as Opener
 
 class MinecraftServer(object):
     """Class of the Minecraft server"""
