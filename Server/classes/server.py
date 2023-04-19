@@ -62,7 +62,7 @@ class MinecraftServer(object):
         t = time.asctime(time.localtime(time.time()))
         PREFIX = "[{0}] [INFO] : ".format(t[-13:-5])
         msg = PREFIX + basemsg
-        print(PREFIX + msg)
+        print(msg)
         import os
         if os.path.exists("logs.log"):
             with open("logs.log", "r") as logfile:
@@ -100,7 +100,7 @@ class MinecraftServer(object):
         t = time.asctime(time.localtime(time.time()))
         PREFIX = "[{0}] [WARN] : ".format(t[-13:-5])
         msg = PREFIX + basemsg
-        print(PREFIX + msg)
+        print(msg)
         import os
         if os.path.exists("logs.log"):
             with open("logs.log", "r") as logfile:
