@@ -32,7 +32,7 @@ class MinecraftServer(object):
         Arg:
         - addr : the address (default is localhost)"""
         import time
-        self.log("Starting Server class... Date of today : " + str(time.time()))
+        self.log("\n_____________________________________\nStarting Server class... Date of today : " + str(time.time()))
         self.overworld = []
         self.addr = (addr, 25565)   #Creating normal socket addr format
         self.socket = MinecraftSocketServerGestionner(addr=self.addr, port=25565)
