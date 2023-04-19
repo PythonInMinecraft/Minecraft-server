@@ -10,6 +10,5 @@ if __name__ == "__main__":
     If you have an issue please report it in GitHub !
     _________________________________________________
     """)
-    print("Launching Minecraft server...")
     mc_server = Server()
     mc_server.start()

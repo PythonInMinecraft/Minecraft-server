@@ -27,10 +27,12 @@ from classes.filing.open_game import Open as Opener
 
 class MinecraftServer(object):
     """Class of the Minecraft server"""
-    def __init__(self, addr=socket.gethostname()):
+    def __init__(self, addr=""):
         """Constructor
         Arg:
         - addr : the address (default is localhost)"""
+        import time
+        self.log("Starting Server class... Date of today : " + str(time.time()))
         self.overworld = []
         self.addr = (addr, 25565)   #Creating normal socket addr format
         self.socket = MinecraftSocketServerGestionner(addr=self.addr, port=25565)
@@ -50,6 +52,21 @@ class MinecraftServer(object):
     def save(self):
         """Save the world"""
         saver = Saver(file="worlds/overworld.mcpysrv", data=self.overworld)
+
+    def log(self, msg):
+        """Log a message
+        Arguments :
+        - msg : the message to log."""
+        print(msg)
+        import os
+        if os.path.exists("logs.log"):
+            with open("logs.log", "r") as logfile:
+                logs = logfile.read()
+            with open("logs.log", "w") as logfile:
+                logfile.write(logs + "\n" + msg)
+        else:
+            with open("logs.log", "w") as logfile:
+                logfile.write(msg)
         
 
 #class Listener(object):
