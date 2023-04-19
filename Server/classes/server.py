@@ -32,7 +32,8 @@ class MinecraftServer(object):
         Arg:
         - addr : the address (default is localhost)"""
         import time
-        self.log("\n_____________________________________\nStarting Server class... Date of today : " + str(time.time()))
+        self.log("_____________________________________")
+        self.log("Starting Server class...")
         self.overworld = []
         self.addr = (addr, 25565)   #Creating normal socket addr format
         self.socket = MinecraftSocketServerGestionner(addr=self.addr, port=25565)
@@ -53,11 +54,53 @@ class MinecraftServer(object):
         """Save the world"""
         saver = Saver(file="worlds/overworld.mcpysrv", data=self.overworld)
 
-    def log(self, msg):
+    def log(self, basemsg):
         """Log a message
         Arguments :
         - msg : the message to log."""
-        print(msg)
+        import time
+        t = time.asctime(time.localtime(time.time()))
+        PREFIX = "[{0}] [INFO] : ".format(t[-13:-5])
+        msg = PREFIX + basemsg
+        print(PREFIX + msg)
+        import os
+        if os.path.exists("logs.log"):
+            with open("logs.log", "r") as logfile:
+                logs = logfile.read()
+            with open("logs.log", "w") as logfile:
+                logfile.write(logs + "\n" + msg)
+        else:
+            with open("logs.log", "w") as logfile:
+                logfile.write(msg)
+
+    def log_error(self, basemsg):
+        """Log an error
+        Arguments :
+        - msg : the error to log."""
+        import time
+        t = time.asctime(time.localtime(time.time()))
+        PREFIX = "[{0}] [ERROR] : ".format(t[-13:-5])
+        msg = PREFIX + basemsg
+        print(PREFIX + msg)
+        import os
+        if os.path.exists("logs.log"):
+            with open("logs.log", "r") as logfile:
+                logs = logfile.read()
+            with open("logs.log", "w") as logfile:
+                logfile.write(logs + "\n" + msg)
+        else:
+            with open("logs.log", "w") as logfile:
+                logfile.write(msg)
+
+    def log_warning(self, basemsg):
+        """Log a warning
+        Arguments :
+        - msg : the warning to log."""
+        import time
+        t = time.asctime(time.localtime(time.time()))
+        PREFIX = "[{0}] [WARN] : ".format(t[-13:-5])
+        msg = PREFIX + basemsg
+        print(PREFIX + msg)
         import os
         if os.path.exists("logs.log"):
             with open("logs.log", "r") as logfile:
