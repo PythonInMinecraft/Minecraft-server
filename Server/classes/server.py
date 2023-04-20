@@ -38,6 +38,57 @@ class MinecraftServer(object):
         self.addr = (addr, 25565)   #Creating normal socket addr format
         self.socket = MinecraftSocketServerGestionner(addr=self.addr, port=25565)
 
+    def return_worlds(self, filter=None):
+        """Return all worlds files find with/without filters
+        Arguments:
+        - filter (default : None) : can be :
+            - "o" : overworld
+            - "n" : nether
+            - "e" : ender"""
+        import os
+        if not(os.path.exist("worlds")):
+            #If the folder Server/worlds doesn't exists
+            self.log_warning("The folder Server/worlds doesn't exist. Returned value : None")
+            return None
+        elif filter == None:
+            #With no filter
+            dir = os.listdir("worlds")
+            files = []
+            for i in dir:
+                #For every items in the directory
+                if os.path.isfile("worlds/" + i) and i[-8:] == ".mcpysrv":
+                    files.append(i)
+        elif filter == "o":
+            #With filter "overworld" (normal minecraft world)
+            dir = os.listdir("worlds")
+            files = []
+            for i in dir:
+                #For every items in the directory
+                if os.path.isfile("worlds/" + i) and i[-10:] == "_o.mcpysrv":
+                    files.append(i)
+        elif filter == "n":
+            #With filter "nether" (a world where there isn't any water (too hot))
+            dir = os.listdir("worlds")
+            files = []
+            for i in dir:
+                #For every items in the directory
+                if os.path.isfile("worlds/" + i) and i[-10:] == "_n.mcpysrv":
+                    files.append(i)
+        elif filter == "e":
+            #With filter "ender" (the world where there is the final Minecraft end boss, the EnderDragon. There is a lot of void.)
+            dir = os.listdir("worlds")
+            files = []
+            for i in dir:
+                #For every items in the directory
+                if os.path.isfile("worlds/" + i) and i[-10:] == "_e.mcpysrv":
+                    files.append(i)
+        else:
+            #Bad filter
+            self.log_error("A bad world filter was set. Impossible to return world. Returned value : None")
+            return None
+        return files
+        
+
     def start(self):
         """Launch the server"""
         self.load_worlds()
@@ -60,9 +111,9 @@ class MinecraftServer(object):
         saver = Saver(file="worlds/overworld.mcpysrv", data=self.overworld)
 
     def log(self, basemsg):
-        """Log a message
-        Arguments :
-        - msg : the message to log."""
+        """Log a message.
+        Argument :
+        - basemsg : the message to log."""
         import time
         t = time.asctime(time.localtime(time.time()))
         PREFIX = "[{0}] [INFO] : ".format(t[-13:-5])
@@ -79,9 +130,9 @@ class MinecraftServer(object):
                 logfile.write(msg)
 
     def log_error(self, basemsg):
-        """Log an error
-        Arguments :
-        - msg : the error to log."""
+        """Log an error.
+        Argument :
+        - basemsg : the error to log."""
         import time
         t = time.asctime(time.localtime(time.time()))
         PREFIX = "[{0}] [ERROR] : ".format(t[-13:-5])
@@ -98,9 +149,9 @@ class MinecraftServer(object):
                 logfile.write(msg)
 
     def log_warning(self, basemsg):
-        """Log a warning
-        Arguments :
-        - msg : the warning to log."""
+        """Log a warning.
+        Argument :
+        - basemsg : the warning to log."""
         import time
         t = time.asctime(time.localtime(time.time()))
         PREFIX = "[{0}] [WARN] : ".format(t[-13:-5])
