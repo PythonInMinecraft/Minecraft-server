@@ -51,8 +51,8 @@ class MinecraftServer(object):
         """Stop the server."""
         import time
         self.log("Stoping the server...")
-        time.sleep(1)
         ...
+        exit(-1)
 
     def return_worlds(self, filter=None):
         """Return all worlds files find with/without filters
@@ -115,9 +115,12 @@ class MinecraftServer(object):
         Arguments:
         - world_name : the name of the world (str)
         - type : can be "o"(overworld), "n"(nether) or "e"(ender). Default : "o"."""
-        if not(type == "o" or type == "n" or type == "e"):
-            self.log_error("The type of the world {0} isn't correct.")
-            self.fatal_error("Bad world type")
+        if not(type == "o" or type == "n" or type == "e"):      #check type
+            self.log_error("The type of the world {0} isn't correct.".format(world_name))
+            self.fatal_error("""Bad world type.
+            At:
+                - Server.create_world()
+                    \_ Server.create_world() #check_type""")
         name = world_name + "_" + type
         self.worlds.append(name)
         #generate world here.
@@ -127,7 +130,9 @@ class MinecraftServer(object):
         """Raise a fatal error and a crash report.
         Argument :
         - reason : the reason of the crash."""
-        self.log_error("FATAL ERROR : {0}".format(reason))
+        self.log_error("FATAL ERROR")
+        self.log_error("Reason of the crash :")
+        self.log_error(reason)
         self.log_error("If this isn't normal, please send an issue on github. Please check logs for more details.")
         self.log_error("The server is switching off. Closing server : Fatal Error")
         #log crash report

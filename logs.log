@@ -1,0 +1,16 @@
+
+[19:29:27] [INFO] : _____________________________________
+[19:29:27] [INFO] : Starting Server class...
+[19:29:27] [INFO] : _____________________________________
+[19:29:27] [WARN] : This version is a developpement version ; launch it will maybe cause some issues.
+[19:29:27] [INFO] : No worlds found, creating 3 new...
+[19:29:28] [ERROR] : The type of the world nether isn't correct.
+[19:29:28] [ERROR] : FATAL ERROR
+[19:29:28] [ERROR] : Reason of the crash :
+[19:29:28] [ERROR] : Bad world type.
+            At:
+                - Server.create_world()
+                    \_ Server.create_world() #check_type
+[19:29:28] [ERROR] : If this isn't normal, please send an issue on github. Please check logs for more details.
+[19:29:28] [ERROR] : The server is switching off. Closing server : Fatal Error
+[19:29:28] [INFO] : Stoping the server...
