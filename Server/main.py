@@ -8,6 +8,8 @@ if __name__ == "__main__":
                     Created by FewerElk
                    (github.com/FewerElk)
     If you have an issue please report it in GitHub !
+    I decline all responsabilities when hacking, I'm
+              not an expert in cyber-security !
     _________________________________________________
     """)
     mc_server = Server()

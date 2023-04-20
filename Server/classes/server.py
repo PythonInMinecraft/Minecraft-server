@@ -34,9 +34,19 @@ class MinecraftServer(object):
         import time
         self.log("_____________________________________")
         self.log("Starting Server class...")
-        self.worlds = []
-        self.addr = (addr, 25565)   #Creating normal socket addr format
-        self.socket = MinecraftSocketServerGestionner(addr=self.addr, port=25565)
+        self.log("_____________________________________")
+        self.worlds = self.return_worlds(filter="jwgusrhg")
+        #self.addr = (addr, 25565)   #Creating normal socket addr format
+        #self.socket = MinecraftSocketServerGestionner(addr=self.addr, port=25565)
+        self.log_warning("This project is not terminated ; do not launch it please, it will maybe cause some issues.")
+        self.stop()
+
+    def stop(self):
+        """Stop the server."""
+        import time
+        self.log("Stoping the server...")
+        time.sleep(1)
+        ...
 
     def return_worlds(self, filter=None):
         """Return all worlds files find with/without filters
@@ -46,11 +56,11 @@ class MinecraftServer(object):
             - "n" : nether
             - "e" : ender"""
         import os
-        if not(os.path.exist("worlds")):
+        if not(os.path.exists("worlds")):
             #If the folder Server/worlds doesn't exists
             self.log_warning("The folder Server/worlds doesn't exist. Returned value : None")
             return None
-        elif filter == None:
+        if filter == None:
             #With no filter
             dir = os.listdir("worlds")
             files = []
@@ -97,9 +107,11 @@ class MinecraftServer(object):
         """Load the worlds of the server
         THIS SECTION MUST HAVE CONTRIBUTORS !"""
         
-    def create_world(self, name, type="normal"):
+    def create_world(self, world_name, type="o"):
         """Create a new world.
-        Type can be "normal", "nether" or "end"."""
+        Arguments:
+        - world_name : the name of the world (str)
+        - type : can be "o"(overworld), "n"(nether) or "e"(ender). Default : "o"."""
         
 
     def open(self):
@@ -147,6 +159,7 @@ class MinecraftServer(object):
         else:
             with open("logs.log", "w") as logfile:
                 logfile.write(msg)
+        time.sleep(2)
 
     def log_warning(self, basemsg):
         """Log a warning.
@@ -166,6 +179,7 @@ class MinecraftServer(object):
         else:
             with open("logs.log", "w") as logfile:
                 logfile.write(msg)
+        time.sleep(1)
         
 
 #class Listener(object):
