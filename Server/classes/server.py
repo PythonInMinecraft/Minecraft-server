@@ -34,17 +34,22 @@ class MinecraftServer(object):
         import time
         self.log("_____________________________________")
         self.log("Starting Server class...")
-        self.overworld = []
+        self.worlds = []
         self.addr = (addr, 25565)   #Creating normal socket addr format
         self.socket = MinecraftSocketServerGestionner(addr=self.addr, port=25565)
 
     def start(self):
         """Launch the server"""
-        self.load_world()
+        self.load_worlds()
 
-    def load_world(self):
+    def load_worlds(self):
         """Load the worlds of the server
         THIS SECTION MUST HAVE CONTRIBUTORS !"""
+        
+    def create_world(self, name, type="normal"):
+        """Create a new world.
+        Type can be "normal", "nether" or "end"."""
+        
 
     def open(self):
         """Open the server to clients"""
