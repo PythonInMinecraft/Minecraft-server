@@ -35,10 +35,16 @@ class MinecraftServer(object):
         self.log("_____________________________________")
         self.log("Starting Server class...")
         self.log("_____________________________________")
-        self.worlds = self.return_worlds(filter="jwgusrhg")
         #self.addr = (addr, 25565)   #Creating normal socket addr format
         #self.socket = MinecraftSocketServerGestionner(addr=self.addr, port=25565)
-        self.log_warning("This project is not terminated ; do not launch it please, it will maybe cause some issues.")
+        self.log_warning("This version is a developpement version ; launch it will maybe cause some issues.")
+        self.worlds = self.return_worlds()
+        self.worlds_data = {}       #This dico is : {"world_name":<pythondata>, ...}
+        if len(self.worlds) == 0:
+            self.log("No worlds found, creating 3 new...")
+            self.create_world(world_name="world", type="o")
+            self.create_world(world_name="nether", type="n<rhfs")
+            self.create_world(world_name="end", type="e")
         self.stop()
 
     def stop(self):
@@ -56,45 +62,42 @@ class MinecraftServer(object):
             - "n" : nether
             - "e" : ender"""
         import os
-        if not(os.path.exists("worlds")):
-            #If the folder Server/worlds doesn't exists
-            self.log_warning("The folder Server/worlds doesn't exist. Returned value : None")
-            return None
         if filter == None:
             #With no filter
-            dir = os.listdir("worlds")
+            path = os.getcwd()+"\\Server\\worlds\\"
+            dir = os.listdir(path)
             files = []
             for i in dir:
                 #For every items in the directory
-                if os.path.isfile("worlds/" + i) and i[-8:] == ".mcpysrv":
+                if os.path.isfile(path + i) and i[-8:] == ".mcpysrv":
                     files.append(i)
         elif filter == "o":
             #With filter "overworld" (normal minecraft world)
-            dir = os.listdir("worlds")
+            dir = os.listdir(path)
             files = []
             for i in dir:
                 #For every items in the directory
-                if os.path.isfile("worlds/" + i) and i[-10:] == "_o.mcpysrv":
+                if os.path.isfile(path + i) and i[-10:] == "_o.mcpysrv":
                     files.append(i)
         elif filter == "n":
             #With filter "nether" (a world where there isn't any water (too hot))
-            dir = os.listdir("worlds")
+            dir = os.listdir(path)
             files = []
             for i in dir:
                 #For every items in the directory
-                if os.path.isfile("worlds/" + i) and i[-10:] == "_n.mcpysrv":
+                if os.path.isfile(path + i) and i[-10:] == "_n.mcpysrv":
                     files.append(i)
         elif filter == "e":
             #With filter "ender" (the world where there is the final Minecraft end boss, the EnderDragon. There is a lot of void.)
-            dir = os.listdir("worlds")
+            dir = os.listdir(path)
             files = []
             for i in dir:
                 #For every items in the directory
-                if os.path.isfile("worlds/" + i) and i[-10:] == "_e.mcpysrv":
+                if os.path.isfile(path + i) and i[-10:] == "_e.mcpysrv":
                     files.append(i)
         else:
             #Bad filter
-            self.log_error("A bad world filter was set. Impossible to return world. Returned value : None")
+            self.log_error("Unknow filter. Impossible to return world. Returned value : None")
             return None
         return files
         
@@ -112,7 +115,24 @@ class MinecraftServer(object):
         Arguments:
         - world_name : the name of the world (str)
         - type : can be "o"(overworld), "n"(nether) or "e"(ender). Default : "o"."""
+        if not(type == "o" or type == "n" or type == "e"):
+            self.log_error("The type of the world {0} isn't correct.")
+            self.fatal_error("Bad world type")
+        name = world_name + "_" + type
+        self.worlds.append(name)
+        #generate world here.
+        #write the world here.
         
+    def fatal_error(self, reason):
+        """Raise a fatal error and a crash report.
+        Argument :
+        - reason : the reason of the crash."""
+        self.log_error("FATAL ERROR : {0}".format(reason))
+        self.log_error("If this isn't normal, please send an issue on github. Please check logs for more details.")
+        self.log_error("The server is switching off. Closing server : Fatal Error")
+        #log crash report
+        self.stop()
+
 
     def open(self):
         """Open the server to clients"""
@@ -159,7 +179,6 @@ class MinecraftServer(object):
         else:
             with open("logs.log", "w") as logfile:
                 logfile.write(msg)
-        time.sleep(2)
 
     def log_warning(self, basemsg):
         """Log a warning.
@@ -179,7 +198,6 @@ class MinecraftServer(object):
         else:
             with open("logs.log", "w") as logfile:
                 logfile.write(msg)
-        time.sleep(1)
         
 
 #class Listener(object):
