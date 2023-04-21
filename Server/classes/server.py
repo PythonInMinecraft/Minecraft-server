@@ -119,8 +119,9 @@ class MinecraftServer(object):
             self.log_error("The type of the world {0} isn't correct.".format(world_name))
             self.fatal_error("""Bad world type.
             At:
-                - Server.create_world()
-                    \_ Server.create_world() #check_type""")
+                - Server/classes/server.py
+                    \_ Server().create_world()
+                      \_ #check_type section.""")
         name = world_name + "_" + type
         self.worlds.append(name)
         #generate world here.
