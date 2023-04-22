@@ -156,9 +156,9 @@ class MinecraftServer(object):
         nb = 1
         self.log("Creating crash report file...")
         import os
-        while os.path.exists("crash_report_{0}.crash".format(nb)):
+        while os.path.exists("crash_reports/crash_report_{0}.crash".format(nb)):
             nb += 1
-        file = "crash_report_" + str(nb) + ".crash"
+        file = "crash_reports/crash_report_" + str(nb) + ".crash"
         with open(file, "w") as report:
             report.write("""# FATAL ERROR report ({0})
             If this error isn't normal, create an issue on GitHub.
@@ -180,7 +180,8 @@ class MinecraftServer(object):
 
     def save(self):
         """Save the world"""
-        saver = Saver(file="worlds/overworld.mcpysrv", data=self.overworld)
+        for i in self.return_worlds():
+            saver = Saver(file="worlds/overworld.mcpysrv", data=self.worlds[i])
 
     def log(self, basemsg):
         """Log a message.
