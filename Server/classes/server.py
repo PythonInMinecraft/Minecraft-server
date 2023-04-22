@@ -32,6 +32,7 @@ class MinecraftServer(object):
         Arg:
         - addr : the address (default is localhost)"""
         import time
+        self.log("#{0}".format(time.asctime(time.localtime(time.time()))))
         self.log("_____________________________________")
         self.log("Starting Server class...")
         self.log("_____________________________________")
@@ -43,7 +44,7 @@ class MinecraftServer(object):
         if len(self.worlds) == 0:
             self.log("No worlds found, creating 3 new...")
             self.create_world(world_name="world", type="o")
-            self.create_world(world_name="nether", type="n<rhfs")
+            self.create_world(world_name="nether", type="n")
             self.create_world(world_name="end", type="e")
         self.stop()
 
@@ -116,7 +117,8 @@ class MinecraftServer(object):
         - world_name : the name of the world (str)
         - type : can be "o"(overworld), "n"(nether) or "e"(ender). Default : "o"."""
         if not(type == "o" or type == "n" or type == "e"):      #check type
-            self.log_error("The type of the world {0} isn't correct.".format(world_name))
+            l = "The type of the world {0} isn't correct.".format(world_name)
+            self.log_error(l)
             self.fatal_error("""Bad world type.
             At:
                 - Server/classes/server.py
@@ -124,8 +126,23 @@ class MinecraftServer(object):
                       \_ #check_type section.""")
         name = world_name + "_" + type
         self.worlds.append(name)
-        #generate world here.
+        self.generate(name)
         #write the world here.
+    
+    def generate(self, world):
+        """Generate the world.
+        BE CAREFUL ! THIS METHOD OVERWRITE EXISTING DATA !
+        Argument :
+        - world : the world to generate (str)"""
+        type = world[-1:]
+        self.log("Generating world {0}")
+        self.log_warning("You are overwriting existing data if the world already exists !")
+        self.log_warning("Method doesn't be coded.")
+        self.fatal_error("""This method doesn't be coded.
+        At:
+            - Server/classes/server.py
+                \_ Server().generate()""")
+
         
     def fatal_error(self, reason):
         """Raise a fatal error and a crash report.
@@ -136,7 +153,24 @@ class MinecraftServer(object):
         self.log_error(reason)
         self.log_error("If this isn't normal, please send an issue on github. Please check logs for more details.")
         self.log_error("The server is switching off. Closing server : Fatal Error")
-        #log crash report
+        nb = 1
+        self.log("Creating crash report file...")
+        import os
+        while os.path.exists("crash_report_{0}.crash".format(nb)):
+            nb += 1
+        file = "crash_report_" + str(nb) + ".crash"
+        with open(file, "w") as report:
+            report.write("""# FATAL ERROR report ({0})
+            If this error isn't normal, create an issue on GitHub.
+            Reason of the crash :
+            {1}
+            Post error action : stopping the server (FATAL ERROR, EXIT CODE -1)
+            This error isn't an enormous error, in this case the server will be stopped without warning and logs.
+            --> An antecedent maybe created the error.
+            IS THE SERVER MODED ? Maybe not, this version isn't a base-modified version. If you modified the server, 
+            The PythoninMinecraft organisation can't do anything.""".format(asctime(localtime(time())), 
+                                                                            reason))
+            self.log("Succes !")
         self.stop()
 
 
