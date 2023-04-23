@@ -1,7 +1,7 @@
 """Save a world"""
 
 class Save(object):
-    """Save a world. File extention should be .mcpysrv"""
+    """Save a world. File extention should be .mcpysrv."""
     BLOCKS = {"minecraft:air":0, "minecraft:grass_block":1, "minecraft:dirt":2, "minecraft:stone":3, "minecraft:cobble_stone":4}
 
     def __init__(self, file, data):
@@ -23,3 +23,6 @@ class Save(object):
             final = final[:-1]
             final += "};"
         return final
+    
+if __name__ == "__main__":
+    exit(0)

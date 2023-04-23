@@ -116,6 +116,7 @@ class MinecraftServer(object):
         Arguments:
         - world_name : the name of the world (str)
         - type : can be "o"(overworld), "n"(nether) or "e"(ender). Default : "o"."""
+        self.log("Starting creation of the world {0}...")
         if not(type == "o" or type == "n" or type == "e"):      #check type
             l = "The type of the world {0} isn't correct.".format(world_name)
             self.log_error(l)
@@ -135,7 +136,7 @@ class MinecraftServer(object):
         Argument :
         - world : the world to generate (str)"""
         type = world[-1:]
-        self.log("Generating world {0}")
+        self.log("Generating world {0}".format(world))
         self.log_warning("You are overwriting existing data if the world already exists !")
         self.log_warning("Method doesn't be coded.")
         self.fatal_error("""This method doesn't be coded.
@@ -181,7 +182,7 @@ class MinecraftServer(object):
     def save(self):
         """Save the world"""
         for i in self.return_worlds():
-            saver = Saver(file="worlds/overworld.mcpysrv", data=self.worlds[i])
+            Saver(file="worlds/overworld.mcpysrv", data=self.worlds[i])
 
     def log(self, basemsg):
         """Log a message.

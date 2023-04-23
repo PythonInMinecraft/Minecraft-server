@@ -4,7 +4,7 @@ class Open(object):
     """Open a world. File extention should be .mcpysrv"""
     BLOCKS = {0:"minecraft:air", 1:"minecraft:grass_block", 2:"minecraft:dirt", 3:"minecraft:stone", 4:"minecraft:cobble_stone"}
 
-    def __init__(self, file, data):
+    def __init__(self, file):
         """Open a world"""
         file = file
         with open(file, "r") as file:
@@ -40,3 +40,10 @@ class Open(object):
     def next(self):
         """Go to the next value and apply"""
         ...
+
+    def return_data(self):
+        """Return the data rode."""
+        ...
+
+if __name__ == "__main__":
+    exit(0)
