@@ -9,5 +9,7 @@ Depends :
 - threading
 - signal
 - tkinter
+- tkinter.simpledialog
+- tkinter.scrolledtext
 # You can become collaborator to this project !
 For become collaborator, create an issue with the template "I want to be contributor" and if "completed" you're now a permanent collaborator

@@ -11,6 +11,9 @@ try:
     from time import *
     from threading import Thread
     from socket import *
+    from tkinter import *
+    from tkinter.scrolledtext import *
+    from tkinter.simpledialog import *
 except ModuleNotFoundError:
     try:
         import classes.errors.errors as errors
@@ -32,6 +35,10 @@ class MinecraftServer(object):
         Arg:
         - addr : the address (default is localhost)"""
         import time
+
+        gui_thread = Thread(target=self.launch_gui, name='GUI')
+        gui_thread.start()
+        
         self.log("#{0}".format(time.asctime(time.localtime(time.time()))))
         self.log("_____________________________________")
         self.log("Starting Server class...")
@@ -43,17 +50,34 @@ class MinecraftServer(object):
         self.worlds_data = {}       #This dico is : {"world_name":<pythondata>, ...}
         if len(self.worlds) == 0:
             self.log("No worlds found, creating 3 new...")
-            self.create_world(world_name="world", type="o")
-            self.create_world(world_name="nether", type="n")
-            self.create_world(world_name="end", type="e")
-        self.stop()
+            self.log_warning("Code not found, skipping...")
+            #self.create_world(world_name="world", type="o")
+            #self.create_world(world_name="nether", type="n")
+            #self.create_world(world_name="end", type="e")
+        #self.stop()
 
     def stop(self):
         """Stop the server."""
         import time
         self.log("Stoping the server...")
+        try:
+            self.main_gui.destroy()
+        except TclError:
+            pass
         ...
-        exit(-1)
+        exit(0)
+
+    def launch_gui(self):
+        """Launch the server GUI, with command entry, player list..."""
+        self.main_gui = Tk()
+        self.main_gui.title("Minecraft server")
+
+        ...
+
+        mainloop()
+
+        """Stop the server when closed"""
+        self.stop()
 
     def return_worlds(self, filter=None):
         """Return all worlds files find with/without filters
@@ -165,7 +189,7 @@ class MinecraftServer(object):
             If this error isn't normal, create an issue on GitHub.
             Reason of the crash :
             {1}
-            Post error action : stopping the server (FATAL ERROR, EXIT CODE -1)
+            Post error action : stopping the server (FATAL ERROR)
             This error isn't an enormous error, in this case the server will be stopped without warning and logs.
             --> An antecedent maybe created the error.
             IS THE SERVER MODED ? Maybe not, this version isn't a base-modified version. If you modified the server, 
