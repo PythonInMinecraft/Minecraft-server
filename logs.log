@@ -1,3 +1,82 @@
 
-[18:35:04] [INFO] : _____________________________________
-[18:35:04] [INFO] : Starting Server class...
+[10:34:18] [INFO] : #Sat Apr 22 10:34:18 2023
+[10:34:18] [INFO] : _____________________________________
+[10:34:18] [INFO] : Starting Server class...
+[10:34:18] [INFO] : _____________________________________
+[10:34:18] [WARN] : This version is a developpement version ; launch it will maybe cause some issues.
+[10:34:18] [INFO] : No worlds found, creating 3 new...
+[10:34:18] [INFO] : Generating world {0}
+[10:34:18] [WARN] : You are overwriting existing data if the world already exists !
+[10:34:18] [WARN] : Method doesn't be coded.
+[10:34:18] [ERROR] : FATAL ERROR
+[10:34:18] [ERROR] : Reason of the crash :
+[10:34:18] [ERROR] : This method doesn't be coded.
+        At:
+            - Server/classes/server.py
+                \_ Server().generate()
+[10:34:18] [ERROR] : If this isn't normal, please send an issue on github. Please check logs for more details.
+[10:34:18] [ERROR] : The server is switching off. Closing server : Fatal Error
+[10:34:18] [INFO] : Creating crash report file...
+[10:34:18] [INFO] : Succes !
+[10:34:18] [INFO] : Stoping the server...
+[10:36:09] [INFO] : #Sat Apr 22 10:36:09 2023
+[10:36:09] [INFO] : _____________________________________
+[10:36:09] [INFO] : Starting Server class...
+[10:36:09] [INFO] : _____________________________________
+[10:36:09] [WARN] : This version is a developpement version ; launch it will maybe cause some issues.
+[10:36:09] [INFO] : No worlds found, creating 3 new...
+[10:36:09] [INFO] : Generating world {0}
+[10:36:09] [WARN] : You are overwriting existing data if the world already exists !
+[10:36:09] [WARN] : Method doesn't be coded.
+[10:36:09] [ERROR] : FATAL ERROR
+[10:36:09] [ERROR] : Reason of the crash :
+[10:36:09] [ERROR] : This method doesn't be coded.
+        At:
+            - Server/classes/server.py
+                \_ Server().generate()
+[10:36:09] [ERROR] : If this isn't normal, please send an issue on github. Please check logs for more details.
+[10:36:09] [ERROR] : The server is switching off. Closing server : Fatal Error
+[10:36:09] [INFO] : Creating crash report file...
+[10:36:09] [INFO] : Succes !
+[10:36:09] [INFO] : Stoping the server...
+[13:12:42] [INFO] : #Sat Apr 22 13:12:42 2023
+[13:12:42] [INFO] : _____________________________________
+[13:12:42] [INFO] : Starting Server class...
+[13:12:43] [INFO] : _____________________________________
+[13:12:43] [WARN] : This version is a developpement version ; launch it will maybe cause some issues.
+[13:12:43] [INFO] : No worlds found, creating 3 new...
+[13:12:43] [INFO] : Generating world {0}
+[13:12:43] [WARN] : You are overwriting existing data if the world already exists !
+[13:12:43] [WARN] : Method doesn't be coded.
+[13:12:43] [ERROR] : FATAL ERROR
+[13:12:43] [ERROR] : Reason of the crash :
+[13:12:43] [ERROR] : This method doesn't be coded.
+        At:
+            - Server/classes/server.py
+                \_ Server().generate()
+[13:12:43] [ERROR] : If this isn't normal, please send an issue on github. Please check logs for more details.
+[13:12:43] [ERROR] : The server is switching off. Closing server : Fatal Error
+[13:12:43] [INFO] : Creating crash report file...
+[13:12:43] [INFO] : Succes !
+[13:12:43] [INFO] : Stoping the server...
+[10:51:45] [INFO] : #Sun Apr 23 10:51:45 2023
+[10:51:45] [INFO] : _____________________________________
+[10:51:45] [INFO] : Starting Server class...
+[10:51:45] [INFO] : _____________________________________
+[10:51:45] [WARN] : This version is a developpement version ; launch it will maybe cause some issues.
+[10:51:45] [INFO] : No worlds found, creating 3 new...
+[10:51:45] [INFO] : Starting creation of the world {0}...
+[10:51:45] [INFO] : Generating world world_o
+[10:51:45] [WARN] : You are overwriting existing data if the world already exists !
+[10:51:45] [WARN] : Method doesn't be coded.
+[10:51:45] [ERROR] : FATAL ERROR
+[10:51:45] [ERROR] : Reason of the crash :
+[10:51:45] [ERROR] : This method doesn't be coded.
+        At:
+            - Server/classes/server.py
+                \_ Server().generate()
+[10:51:45] [ERROR] : If this isn't normal, please send an issue on github. Please check logs for more details.
+[10:51:45] [ERROR] : The server is switching off. Closing server : Fatal Error
+[10:51:45] [INFO] : Creating crash report file...
+[10:51:45] [INFO] : Succes !
+[10:51:46] [INFO] : Stoping the server...

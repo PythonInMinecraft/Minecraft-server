@@ -1,0 +1,12 @@
+# FATAL ERROR report (Sat Apr 22 13:12:43 2023)
+            If this error isn't normal, create an issue on GitHub.
+            Reason of the crash :
+            This method doesn't be coded.
+        At:
+            - Server/classes/server.py
+                \_ Server().generate()
+            Post error action : stopping the server (FATAL ERROR, EXIT CODE -1)
+            This error isn't an enormous error, in this case the server will be stopped without warning and logs.
+            --> An antecedent maybe created the error.
+            IS THE SERVER MODED ? Maybe not, this version isn't a base-modified version. If you modified the server, 
+            The PythoninMinecraft organisation can't do anything.
