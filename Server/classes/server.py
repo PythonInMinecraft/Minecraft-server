@@ -38,6 +38,8 @@ class MinecraftServer(object):
 
         gui_thread = Thread(target=self.launch_gui, name='GUI')
         gui_thread.start()
+
+        sleep(5)
         
         self.log("#{0}".format(time.asctime(time.localtime(time.time()))))
         self.log("_____________________________________")
@@ -72,12 +74,47 @@ class MinecraftServer(object):
         self.main_gui = Tk()
         self.main_gui.title("Minecraft server")
 
-        ...
+        self.main_frame = Frame(self.main_gui)
+        self.main_frame.pack()
+
+        self.player_list_frame = Frame(self.main_frame)
+        self.player_list_frame.pack(side=LEFT)
+
+        self.log_frame = Frame(self.main_frame)
+        self.log_frame.pack(side=LEFT)
+
+        self.command_entry_frame = Frame(self.main_gui)
+        self.command_entry_frame.pack()
+
+        #_______________________________
+
+        self.logs_text = ScrolledText(self.log_frame, state="disabled")
+        self.logs_text.pack()
+
+        self.player_list = Listbox(self.player_list_frame, width=20, height=24)
+        self.player_list.pack()
+
+        self.command_entry = Entry(self.command_entry_frame, width=50)
+        self.command_entry.pack(side=LEFT)
+
+        self.command_entry.bind("<Return>", self.get_command)
 
         mainloop()
 
         """Stop the server when closed"""
         self.stop()
+
+    def get_command(self, e=None):
+        """Get the command from the gui"""
+        cmd = self.command_entry.get()
+        self.log("CONSOLE issued server command : {0}".format(cmd))
+
+        self.command_entry.destroy()
+
+        self.command_entry = Entry(self.command_entry_frame, width=50)
+        self.command_entry.pack(side=LEFT)
+
+        self.command_entry.bind("<Return>", self.get_command)
 
     def return_worlds(self, filter=None):
         """Return all worlds files find with/without filters
@@ -217,6 +254,12 @@ class MinecraftServer(object):
         PREFIX = "[{0}] [INFO] : ".format(t[-13:-5])
         msg = PREFIX + basemsg
         print(msg)
+
+        self.logs_text.configure(state="normal")
+        self.logs_text.insert(END, msg + "\n")
+        self.logs_text.configure(state="disabled")
+        self.logs_text.yview(END)
+
         import os
         if os.path.exists("logs.log"):
             with open("logs.log", "r") as logfile:
@@ -236,6 +279,12 @@ class MinecraftServer(object):
         PREFIX = "[{0}] [ERROR] : ".format(t[-13:-5])
         msg = PREFIX + basemsg
         print(msg)
+
+        self.logs_text.configure(state="normal")
+        self.logs_text.insert(END, msg)
+        self.logs_text.configure(state="disabled")
+        self.logs_text.yview(END)
+
         import os
         if os.path.exists("logs.log"):
             with open("logs.log", "r") as logfile:
@@ -255,6 +304,12 @@ class MinecraftServer(object):
         PREFIX = "[{0}] [WARN] : ".format(t[-13:-5])
         msg = PREFIX + basemsg
         print(msg)
+
+        self.logs_text.configure(state="normal")
+        self.logs_text.insert(END, msg+"\n")
+        self.logs_text.configure(state="disabled")
+        self.logs_text.yview(END)
+
         import os
         if os.path.exists("logs.log"):
             with open("logs.log", "r") as logfile:
