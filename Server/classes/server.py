@@ -11,6 +11,7 @@ try:
     from time import *
     from threading import Thread
     from socket import *
+    from mcstatus import MinecraftServer
 except ModuleNotFoundError:
     try:
         import classes.errors.errors as errors
@@ -20,6 +21,7 @@ except ModuleNotFoundError:
 --> time
 --> threading
 --> socket
+--> mcstatus
 --> and more""")
 # Internals files
 from classes.filing.save_game import Save as Saver
@@ -27,17 +29,25 @@ from classes.filing.open_game import Open as Opener
 
 class MinecraftServer(object):
     """Class of the Minecraft server"""
-    def __init__(self, addr=""):
+    def __init__(self, version):
         """Constructor
         Arg:
-        - addr : the address (default is localhost)"""
+        - version : the version of the server"""
+        self.VERSION = version
         import time
         self.log("#{0}".format(time.asctime(time.localtime(time.time()))))
         self.log("_____________________________________")
         self.log("Starting Server class...")
         self.log("_____________________________________")
-        #self.addr = (addr, 25565)   #Creating normal socket addr format
-        #self.socket = MinecraftSocketServerGestionner(addr=self.addr, port=25565)
+
+        self.server = MinecraftServer("127.0.0.1", 25565)
+
+        self.server_socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+        self.server_address = ('127.0.0.1', 25565)
+        self.server_socket.bind(self.server_address)
+
+        self.log("Server created.")
+
         self.log_warning("This version is a developpement version ; launch it will maybe cause some issues.")
         self.worlds = self.return_worlds()
         self.worlds_data = {}       #This dico is : {"world_name":<pythondata>, ...}
@@ -46,7 +56,19 @@ class MinecraftServer(object):
             self.create_world(world_name="world", type="o")
             self.create_world(world_name="nether", type="n")
             self.create_world(world_name="end", type="e")
-        self.stop()
+        self.start()
+
+    def main_loop(self):
+        """Main loop of the server"""
+        while True:
+            client_socket, client_address = self.server_socket.accept()
+            self.log("Connection from {0}.".format(client_address))
+            status = self.server.status()
+            response = "Version : {0}, Il y a {1} joueur(s) en ligne : {2}".format(status.version.name, 
+                                                                                   status.players.online, 
+                                                                                   ", ".join(player.name for player in status.players.sample))
+            client_socket.sendall(response.encode('utf-8'))
+            client_socket.close()
 
     def stop(self):
         """Stop the server."""
@@ -106,6 +128,9 @@ class MinecraftServer(object):
     def start(self):
         """Launch the server"""
         self.load_worlds()
+        self.server_socket.listen(1)
+        self.log("Listening...")
+
 
     def load_worlds(self):
         """Load the worlds of the server

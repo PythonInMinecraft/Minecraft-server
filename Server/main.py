@@ -16,5 +16,5 @@ if __name__ == "__main__":
     _________________________________________________
     """)
     print("Server version : {0}\nClients version : {1}".format(VERSION, CLIENT_VERSION))
-    mc_server = Server()
+    mc_server = Server(CLIENT_VERSION)
     mc_server.start()
