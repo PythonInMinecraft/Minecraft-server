@@ -38,6 +38,7 @@ class MinecraftServer(object):
         Arg:
         - addr : the address (default is localhost)"""
         import time
+        print("Please wait...")
 
         gui_thread = Thread(target=self.launch_gui, name='GUI')
         gui_thread.start()
@@ -75,9 +76,9 @@ class MinecraftServer(object):
     def get_cmd(self, target):
         """Get all the commands."""
         if target == "CONSOLE":
-            self.command_list = ["help"]
+            self.command_list = ["/help"]
         else:
-            self.command_list = ["help", "gamemode"]
+            self.command_list = ["/help", "/gamemode"]
 
     def launch_gui(self):
         """Launch the server GUI, with command entry, player list..."""
@@ -124,7 +125,7 @@ class MinecraftServer(object):
         self.command_entry = Entry(self.command_entry_frame, width=50)
         self.command_entry.pack(side=LEFT)
 
-        self.command_entry.bind("<Return>", self.get_command)
+        self.command_entry.bind("<Return>", self.get_console_command)
 
         self.execute_command(cmd, "CONSOLE")
 
@@ -139,16 +140,22 @@ class MinecraftServer(object):
                 splited = command.split(" ")
                 if splited[0] in self.command_list:
                     if splited[0] == "/help":
-                        self.show_help(runner, splited[1:].join(" "))
+                        self.show_help(runner, " ".join(splited[1:]))
                 else:
-                    self.log_warning("Unknow command. Type \"help\" for help.")
+                    self.log_warning("Unknow command. Type \"/help\" for help.")
             else:
+                self.log_warning("This isn't a command !")
                 self.send_to_chat(command, runner)  #send to chat
 
     def show_help(self, target, path):
         """Show the help to the specific target"""
         self.log("Help showed to {0} for path {1}.".format(target, path))
-        ...
+        if target == "CONSOLE":
+            self.log("""____CONSOLE HELP MENU____""")
+            self.log("""- /help <path> --> show the help of the determined path""")
+            self.log("""...""")
+        else:
+            ...
 
     def send_to_chat(self, msg, entity):
         """Send a message in the chat.

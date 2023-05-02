@@ -16,5 +16,6 @@ if __name__ == "__main__":
     _________________________________________________
     """)
     print("Server version : {0}\nClients version : {1}".format(VERSION, CLIENT_VERSION))
+    print("Please wait...")
     mc_server = Server()
     mc_server.start()
