@@ -10,3 +10,11 @@
 [12:02:12] [INFO] : CONSOLE issued server command : bonjour
 [12:02:18] [INFO] : CONSOLE issued server command : salut
 [12:02:22] [INFO] : CONSOLE issued server command : gm 1
+[17:52:16] [INFO] : CONSOLE issued server command : gs
+[17:52:16] [INFO] : #Tue May  2 17:52:16 2023
+[17:52:16] [INFO] : _____________________________________
+[17:52:16] [INFO] : Starting Server class...
+[17:52:16] [INFO] : _____________________________________
+[17:52:16] [WARN] : This version is a developpement version ; launch it will maybe cause some issues.
+[17:52:16] [INFO] : No worlds found, creating 3 new...
+[17:52:16] [WARN] : Code not found, skipping...

@@ -30,6 +30,9 @@ from classes.filing.open_game import Open as Opener
 
 class MinecraftServer(object):
     """Class of the Minecraft server"""
+
+    command_list = []
+
     def __init__(self, addr=""):
         """Constructor
         Arg:
@@ -68,6 +71,13 @@ class MinecraftServer(object):
             pass
         ...
         exit(0)
+    
+    def get_cmd(self, target):
+        """Get all the commands."""
+        if target == "CONSOLE":
+            self.command_list = ["help"]
+        else:
+            self.command_list = ["help", "gamemode"]
 
     def launch_gui(self):
         """Launch the server GUI, with command entry, player list..."""
@@ -97,14 +107,14 @@ class MinecraftServer(object):
         self.command_entry = Entry(self.command_entry_frame, width=50)
         self.command_entry.pack(side=LEFT)
 
-        self.command_entry.bind("<Return>", self.get_command)
+        self.command_entry.bind("<Return>", self.get_console_command)
 
         mainloop()
 
         """Stop the server when closed"""
         self.stop()
 
-    def get_command(self, e=None):
+    def get_console_command(self, e=None):
         """Get the command from the gui"""
         cmd = self.command_entry.get()
         self.log("CONSOLE issued server command : {0}".format(cmd))
@@ -115,6 +125,38 @@ class MinecraftServer(object):
         self.command_entry.pack(side=LEFT)
 
         self.command_entry.bind("<Return>", self.get_command)
+
+        self.execute_command(cmd, "CONSOLE")
+
+    def execute_command(self, command, runner):
+        """Run a command.
+        Arguments :
+        - command : the command (str)
+        - runner : the player/console/entity who run the command."""
+        self.get_cmd(runner)
+        if not(len(command) == 0):  #Is the command empty ?
+            if command[0] == "/":   #Is it a command ?
+                splited = command.split(" ")
+                if splited[0] in self.command_list:
+                    if splited[0] == "/help":
+                        self.show_help(runner, splited[1:].join(" "))
+                else:
+                    self.log_warning("Unknow command. Type \"help\" for help.")
+            else:
+                self.send_to_chat(command, runner)  #send to chat
+
+    def show_help(self, target, path):
+        """Show the help to the specific target"""
+        self.log("Help showed to {0} for path {1}.".format(target, path))
+        ...
+
+    def send_to_chat(self, msg, entity):
+        """Send a message in the chat.
+        Arguments:
+        - msg : the message (str)
+        - entity : who send the message"""
+        ...
+        
 
     def return_worlds(self, filter=None):
         """Return all worlds files find with/without filters
