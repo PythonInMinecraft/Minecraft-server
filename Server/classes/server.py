@@ -11,8 +11,7 @@ try:
     from time import *
     from threading import Thread
     from socket import *
-    from mcstatus import MinecraftServer
-except ModuleNotFoundError:
+except Exception:
     try:
         import classes.errors.errors as errors
     except:
@@ -21,7 +20,6 @@ except ModuleNotFoundError:
 --> time
 --> threading
 --> socket
---> mcstatus
 --> and more""")
 # Internals files
 from classes.filing.save_game import Save as Saver
@@ -34,13 +32,13 @@ class MinecraftServer(object):
         Arg:
         - version : the version of the server"""
         self.VERSION = version
+        self.MAX_PLAYER = 20        #To change
+        self.online = []    #Online players list
         import time
         self.log("#{0}".format(time.asctime(time.localtime(time.time()))))
         self.log("_____________________________________")
         self.log("Starting Server class...")
         self.log("_____________________________________")
-
-        self.server = MinecraftServer("127.0.0.1", 25565)
 
         self.server_socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
         self.server_address = ('127.0.0.1', 25565)
@@ -63,10 +61,7 @@ class MinecraftServer(object):
         while True:
             client_socket, client_address = self.server_socket.accept()
             self.log("Connection from {0}.".format(client_address))
-            status = self.server.status()
-            response = "Version : {0}, Il y a {1} joueur(s) en ligne : {2}".format(status.version.name, 
-                                                                                   status.players.online, 
-                                                                                   ", ".join(player.name for player in status.players.sample))
+            response = "Version : {0}. There are {1} player online for {2} max.".format(self.VERSION, len(self.online), self.MAX_PLAYER)
             client_socket.sendall(response.encode('utf-8'))
             client_socket.close()
 
