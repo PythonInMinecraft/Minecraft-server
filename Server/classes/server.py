@@ -40,7 +40,7 @@ class MinecraftServer(object):
         self.log("Starting Server class...")
         self.log("_____________________________________")
 
-        self.server_socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+        self.server_socket = socket(AF_INET, SOCK_STREAM)
         self.server_address = ('127.0.0.1', 25565)
         self.server_socket.bind(self.server_address)
 
@@ -58,12 +58,35 @@ class MinecraftServer(object):
 
     def main_loop(self):
         """Main loop of the server"""
+        self.server_socket.listen(self.MAX_PLAYER)
         while True:
-            client_socket, client_address = self.server_socket.accept()
-            self.log("Connection from {0}.".format(client_address))
-            response = "Version : {0}. There are {1} player online for {2} max.".format(self.VERSION, len(self.online), self.MAX_PLAYER)
-            client_socket.sendall(response.encode('utf-8'))
-            client_socket.close()
+            if len(self.online) <= self.MAX_PLAYER:
+                client_socket, client_address = self.server_socket.accept()
+                self.log("Connection from {0}.".format(client_address))
+                self.online.append(client_address)
+                response = "Version : {0}. There are {1} player online for {2} max.".format(self.VERSION, len(self.online), self.MAX_PLAYER)
+                client_socket.sendall(response.encode('utf-8'))
+                client_socket.close()
+                self.online.remove(client_address)
+
+            else:   #If the server is full.
+
+                ###################################################
+                #client_socket, client_address = self.server_socket.accept()
+                #self.log("Connection from {0}.".format(client_address))
+                #self.log_warning("The server is full !!!")
+                #response = "The server is full !"
+                #client_socket.sendall(response.encode('utf-8'))
+                #client_socket.close()
+                #self.log_warning("Connection denied.")
+                ##################################################
+
+                #                    OR
+
+                ##################################################
+                pass            #server full --> ignore and don't accept
+                ##################################################
+
 
     def stop(self):
         """Stop the server."""
@@ -123,8 +146,8 @@ class MinecraftServer(object):
     def start(self):
         """Launch the server"""
         self.load_worlds()
-        self.server_socket.listen(1)
-        self.log("Listening...")
+        self.log("Main loop started...")
+        self.main_loop()
 
 
     def load_worlds(self):
@@ -159,10 +182,10 @@ class MinecraftServer(object):
         self.log("Generating world {0}".format(world))
         self.log_warning("You are overwriting existing data if the world already exists !")
         self.log_warning("Method doesn't be coded.")
-        self.fatal_error("""This method doesn't be coded.
-        At:
-            - Server/classes/server.py
-                \_ Server().generate()""")
+        #self.fatal_error("""This method doesn't be coded.
+        #At:
+        #    - Server/classes/server.py
+        #        \_ Server().generate()""")
 
         
     def fatal_error(self, reason):

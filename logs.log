@@ -80,3 +80,103 @@
 [10:51:45] [INFO] : Creating crash report file...
 [10:51:45] [INFO] : Succes !
 [10:51:46] [INFO] : Stoping the server...
+[17:26:08] [INFO] : #Tue May  2 17:26:08 2023
+[17:26:09] [INFO] : _____________________________________
+[17:26:09] [INFO] : Starting Server class...
+[17:26:09] [INFO] : _____________________________________
+[17:26:25] [INFO] : #Tue May  2 17:26:25 2023
+[17:26:25] [INFO] : _____________________________________
+[17:26:25] [INFO] : Starting Server class...
+[17:26:25] [INFO] : _____________________________________
+[17:26:41] [INFO] : #Tue May  2 17:26:41 2023
+[17:26:41] [INFO] : _____________________________________
+[17:26:41] [INFO] : Starting Server class...
+[17:26:41] [INFO] : _____________________________________
+[17:26:41] [INFO] : Server created.
+[17:26:41] [WARN] : This version is a developpement version ; launch it will maybe cause some issues.
+[17:26:41] [INFO] : No worlds found, creating 3 new...
+[17:26:41] [INFO] : Starting creation of the world {0}...
+[17:26:41] [INFO] : Generating world world_o
+[17:26:41] [WARN] : You are overwriting existing data if the world already exists !
+[17:26:41] [WARN] : Method doesn't be coded.
+[17:26:41] [ERROR] : FATAL ERROR
+[17:26:41] [ERROR] : Reason of the crash :
+[17:26:41] [ERROR] : This method doesn't be coded.
+        At:
+            - Server/classes/server.py
+                \_ Server().generate()
+[17:26:41] [ERROR] : If this isn't normal, please send an issue on github. Please check logs for more details.
+[17:26:41] [ERROR] : The server is switching off. Closing server : Fatal Error
+[17:26:41] [INFO] : Creating crash report file...
+[17:26:41] [INFO] : Succes !
+[17:26:41] [INFO] : Stoping the server...
+[17:28:23] [INFO] : #Tue May  2 17:28:23 2023
+[17:28:23] [INFO] : _____________________________________
+[17:28:23] [INFO] : Starting Server class...
+[17:28:23] [INFO] : _____________________________________
+[17:28:23] [INFO] : Server created.
+[17:28:23] [WARN] : This version is a developpement version ; launch it will maybe cause some issues.
+[17:28:23] [INFO] : No worlds found, creating 3 new...
+[17:28:23] [INFO] : Starting creation of the world {0}...
+[17:28:23] [INFO] : Generating world world_o
+[17:28:23] [WARN] : You are overwriting existing data if the world already exists !
+[17:28:23] [WARN] : Method doesn't be coded.
+[17:28:23] [INFO] : Starting creation of the world {0}...
+[17:28:23] [INFO] : Generating world nether_n
+[17:28:23] [WARN] : You are overwriting existing data if the world already exists !
+[17:28:23] [WARN] : Method doesn't be coded.
+[17:28:23] [INFO] : Starting creation of the world {0}...
+[17:28:23] [INFO] : Generating world end_e
+[17:28:23] [WARN] : You are overwriting existing data if the world already exists !
+[17:28:23] [WARN] : Method doesn't be coded.
+[17:28:23] [INFO] : Listening...
+[17:28:23] [INFO] : Listening...
+[17:29:55] [INFO] : #Tue May  2 17:29:55 2023
+[17:29:55] [INFO] : _____________________________________
+[17:29:55] [INFO] : Starting Server class...
+[17:29:55] [INFO] : _____________________________________
+[17:29:55] [INFO] : Server created.
+[17:29:55] [WARN] : This version is a developpement version ; launch it will maybe cause some issues.
+[17:29:55] [INFO] : No worlds found, creating 3 new...
+[17:29:55] [INFO] : Starting creation of the world {0}...
+[17:29:55] [INFO] : Generating world world_o
+[17:29:55] [WARN] : You are overwriting existing data if the world already exists !
+[17:29:55] [WARN] : Method doesn't be coded.
+[17:29:55] [INFO] : Starting creation of the world {0}...
+[17:29:55] [INFO] : Generating world nether_n
+[17:29:55] [WARN] : You are overwriting existing data if the world already exists !
+[17:29:55] [WARN] : Method doesn't be coded.
+[17:29:55] [INFO] : Starting creation of the world {0}...
+[17:29:55] [INFO] : Generating world end_e
+[17:29:55] [WARN] : You are overwriting existing data if the world already exists !
+[17:29:55] [WARN] : Method doesn't be coded.
+[17:29:56] [INFO] : Main loop started...
+[17:30:05] [INFO] : Connection from ('127.0.0.1', 49735).
+[17:30:05] [INFO] : Connection from ('127.0.0.1', 49736).
+[17:30:05] [INFO] : Connection from ('127.0.0.1', 49737).
+[17:30:06] [INFO] : Connection from ('127.0.0.1', 49739).
+[17:30:11] [INFO] : Connection from ('127.0.0.1', 49742).
+[17:30:12] [INFO] : Connection from ('127.0.0.1', 49745).
+[17:30:13] [INFO] : Connection from ('127.0.0.1', 49747).
+[17:30:18] [INFO] : Connection from ('127.0.0.1', 49751).
+[17:30:32] [INFO] : Connection from ('127.0.0.1', 49761).
+[17:30:49] [INFO] : Connection from ('127.0.0.1', 49770).
+[17:30:50] [INFO] : Connection from ('127.0.0.1', 49772).
+[17:30:57] [INFO] : Connection from ('127.0.0.1', 49777).
+[17:30:58] [INFO] : Connection from ('127.0.0.1', 49778).
+[17:31:03] [INFO] : Connection from ('127.0.0.1', 49782).
+[17:31:04] [INFO] : Connection from ('127.0.0.1', 49783).
+[17:31:09] [INFO] : Connection from ('127.0.0.1', 49786).
+[17:31:09] [INFO] : Connection from ('127.0.0.1', 49787).
+[17:31:09] [INFO] : Connection from ('127.0.0.1', 49788).
+[17:31:12] [INFO] : Connection from ('127.0.0.1', 49791).
+[17:31:13] [INFO] : Connection from ('127.0.0.1', 49793).
+[17:31:14] [INFO] : Connection from ('127.0.0.1', 49794).
+[17:31:15] [INFO] : Connection from ('127.0.0.1', 49796).
+[17:31:17] [INFO] : Connection from ('127.0.0.1', 49798).
+[17:31:18] [INFO] : Connection from ('127.0.0.1', 49799).
+[17:31:19] [INFO] : Connection from ('127.0.0.1', 49801).
+[17:31:20] [INFO] : Connection from ('127.0.0.1', 49802).
+[17:31:22] [INFO] : Connection from ('127.0.0.1', 49804).
+[17:31:23] [INFO] : Connection from ('127.0.0.1', 49805).
+[17:31:24] [INFO] : Connection from ('127.0.0.1', 49807).
