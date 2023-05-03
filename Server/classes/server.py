@@ -31,7 +31,7 @@ from classes.filing.open_game import Open as Opener
 class MinecraftServer(object):
     """Class of the Minecraft server"""
 
-    command_list = []
+    command_list = {}
 
     def __init__(self, addr=""):
         """Constructor
@@ -76,9 +76,9 @@ class MinecraftServer(object):
     def get_cmd(self, target):
         """Get all the commands."""
         if target == "CONSOLE":
-            self.command_list = ["/help"]
+            self.command_list = {"/help":"classes.commands.help"}
         else:
-            self.command_list = ["/help", "/gamemode"]
+            self.command_list = {"/help":"classes.commands.help", "/gamemode":"classes.commands.gamemode"}
 
     def launch_gui(self):
         """Launch the server GUI, with command entry, player list..."""
@@ -138,24 +138,17 @@ class MinecraftServer(object):
         if not(len(command) == 0):  #Is the command empty ?
             if command[0] == "/":   #Is it a command ?
                 splited = command.split(" ")
-                if splited[0] in self.command_list:
-                    if splited[0] == "/help":
-                        self.show_help(runner, " ".join(splited[1:]))
-                else:
+                try:
+                    path = self.command_list[splited[0]]
+                    with open("Server/classes/temp/command_executor.py", "w") as file:
+                        file.write("import {0} as cmd".format(path))
+                    import classes.temp.command_executor as ce
+                    ce.cmd.main(self, runner, " ".join(splited[1:]))
+                except KeyError:
                     self.log_warning("Unknow command. Type \"/help\" for help.")
             else:
                 self.log_warning("This isn't a command !")
                 self.send_to_chat(command, runner)  #send to chat
-
-    def show_help(self, target, path):
-        """Show the help to the specific target"""
-        self.log("Help showed to {0} for path {1}.".format(target, path))
-        if target == "CONSOLE":
-            self.log("""____CONSOLE HELP MENU____""")
-            self.log("""- /help <path> --> show the help of the determined path""")
-            self.log("""...""")
-        else:
-            ...
 
     def send_to_chat(self, msg, entity):
         """Send a message in the chat.

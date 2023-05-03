@@ -1,0 +1,1 @@
+import classes.commands.help as cmd
