@@ -126,3 +126,105 @@
 [10:53:03] [INFO] : ____CONSOLE HELP MENU____
 [10:53:03] [INFO] : - /help <path> --> show the help of the determined path
 [10:53:03] [INFO] : ...
+[10:59:55] [INFO] : #Wed May  3 10:59:55 2023
+[10:59:55] [INFO] : _____________________________________
+[10:59:55] [INFO] : Starting Server class...
+[10:59:55] [INFO] : _____________________________________
+[10:59:55] [WARN] : This version is a developpement version ; launch it will maybe cause some issues.
+[10:59:55] [INFO] : No worlds found, creating 3 new...
+[10:59:55] [WARN] : Code not found, skipping...
+[10:59:55] [INFO] : CONSOLE issued server command : /help
+[10:59:55] [INFO] : Help showed to CONSOLE for path [].
+[10:59:55] [INFO] : ____CONSOLE HELP MENU____
+[10:59:55] [INFO] : - /help <path> --> show the help of the determined path
+[10:59:55] [INFO] : ...
+[11:00:56] [INFO] : #Wed May  3 11:00:56 2023
+[11:00:56] [INFO] : _____________________________________
+[11:00:57] [INFO] : Starting Server class...
+[11:00:57] [INFO] : _____________________________________
+[11:00:57] [WARN] : This version is a developpement version ; launch it will maybe cause some issues.
+[11:00:57] [INFO] : No worlds found, creating 3 new...
+[11:00:57] [WARN] : Code not found, skipping...
+[11:00:57] [INFO] : CONSOLE issued server command : /help
+[11:00:57] [INFO] : Help showed to CONSOLE for path .
+[11:00:57] [INFO] : ____CONSOLE HELP MENU____
+[11:00:57] [INFO] : - /help <path> --> show the help of the determined path
+[11:00:57] [INFO] : ...
+[11:01:09] [INFO] : #Wed May  3 11:01:09 2023
+[11:01:09] [INFO] : _____________________________________
+[11:01:09] [INFO] : Starting Server class...
+[11:01:09] [INFO] : _____________________________________
+[11:01:09] [WARN] : This version is a developpement version ; launch it will maybe cause some issues.
+[11:01:09] [INFO] : No worlds found, creating 3 new...
+[11:01:09] [WARN] : Code not found, skipping...
+[11:01:15] [INFO] : CONSOLE issued server command : /help hi goodbye
+[11:01:15] [INFO] : Help showed to CONSOLE for path hi goodbye.
+[11:01:15] [INFO] : ____CONSOLE HELP MENU____
+[11:01:15] [INFO] : - /help <path> --> show the help of the determined path
+[11:01:15] [INFO] : ...
+[11:01:28] [INFO] : CONSOLE issued server command : wrhwhf
+[11:01:28] [WARN] : This isn't a command !
+[11:01:32] [INFO] : CONSOLE issued server command : stop
+[11:01:32] [WARN] : This isn't a command !
+[11:01:38] [INFO] : CONSOLE issued server command : /stop
+[11:01:38] [WARN] : Unknow command. Type "/help" for help.
+[11:04:19] [INFO] : #Wed May  3 11:04:19 2023
+[11:04:19] [INFO] : _____________________________________
+[11:04:19] [INFO] : Starting Server class...
+[11:04:19] [INFO] : _____________________________________
+[11:04:19] [WARN] : This version is a developpement version ; launch it will maybe cause some issues.
+[11:04:19] [INFO] : No worlds found, creating 3 new...
+[11:04:19] [WARN] : Code not found, skipping...
+[11:04:23] [INFO] : CONSOLE issued server command : /help
+[11:04:23] [INFO] : Help showed to CONSOLE for path .
+[11:04:23] [INFO] : ____CONSOLE HELP MENU____
+[11:04:23] [INFO] : - /help <path> --> show the help of the determined path
+[11:04:23] [INFO] : ...
+[11:04:28] [INFO] : CONSOLE issued server command : /gamemode
+[11:04:28] [WARN] : Unknow command. Type "/help" for help.
+[11:04:31] [INFO] : CONSOLE issued server command : /stop
+[11:04:31] [INFO] : Help showed to CONSOLE for path .
+[11:04:31] [INFO] : ____CONSOLE HELP MENU____
+[11:04:31] [INFO] : - /help <path> --> show the help of the determined path
+[11:04:31] [INFO] : ...
+[11:04:45] [INFO] : CONSOLE issued server command : /stop
+[11:04:45] [INFO] : Help showed to CONSOLE for path .
+[11:04:45] [INFO] : ____CONSOLE HELP MENU____
+[11:04:45] [INFO] : - /help <path> --> show the help of the determined path
+[11:04:45] [INFO] : ...
+[11:05:55] [INFO] : CONSOLE issued server command : /stop
+[11:05:57] [INFO] : #Wed May  3 11:05:57 2023
+[11:05:57] [INFO] : _____________________________________
+[11:05:57] [INFO] : Starting Server class...
+[11:05:57] [INFO] : _____________________________________
+[11:05:57] [WARN] : This version is a developpement version ; launch it will maybe cause some issues.
+[11:05:57] [INFO] : No worlds found, creating 3 new...
+[11:05:57] [WARN] : Code not found, skipping...
+[11:06:05] [INFO] : CONSOLE issued server command : /stop
+[11:06:42] [INFO] : #Wed May  3 11:06:42 2023
+[11:06:42] [INFO] : _____________________________________
+[11:06:42] [INFO] : Starting Server class...
+[11:06:42] [INFO] : _____________________________________
+[11:06:42] [WARN] : This version is a developpement version ; launch it will maybe cause some issues.
+[11:06:42] [INFO] : No worlds found, creating 3 new...
+[11:06:42] [WARN] : Code not found, skipping...
+[11:06:43] [INFO] : CONSOLE issued server command : /stop
+[11:06:43] [INFO] : Stopping the server with the command runned by CONSOLE
+[11:06:43] [INFO] : Stoping the server...
+[11:06:52] [INFO] : #Wed May  3 11:06:52 2023
+[11:06:52] [INFO] : _____________________________________
+[11:06:52] [INFO] : Starting Server class...
+[11:06:52] [INFO] : _____________________________________
+[11:06:52] [WARN] : This version is a developpement version ; launch it will maybe cause some issues.
+[11:06:52] [INFO] : No worlds found, creating 3 new...
+[11:06:52] [WARN] : Code not found, skipping...
+[11:06:54] [INFO] : CONSOLE issued server command : /help test1234
+[11:06:54] [INFO] : Help showed to CONSOLE for path test1234.
+[11:06:54] [INFO] : ____CONSOLE HELP MENU____
+[11:06:54] [INFO] : - /help <path> --> show the help of the determined path
+[11:06:54] [INFO] : ...
+[11:06:58] [INFO] : CONSOLE issued server command : /stop
+[11:06:58] [INFO] : Help showed to CONSOLE for path .
+[11:06:58] [INFO] : ____CONSOLE HELP MENU____
+[11:06:58] [INFO] : - /help <path> --> show the help of the determined path
+[11:06:58] [INFO] : ...

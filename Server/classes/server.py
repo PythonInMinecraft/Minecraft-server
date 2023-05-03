@@ -76,9 +76,9 @@ class MinecraftServer(object):
     def get_cmd(self, target):
         """Get all the commands."""
         if target == "CONSOLE":
-            self.command_list = {"/help":"classes.commands.help"}
+            self.command_list = {"/help":"classes.commands.help", "/stop":"classes.commands.stop"}
         else:
-            self.command_list = {"/help":"classes.commands.help", "/gamemode":"classes.commands.gamemode"}
+            self.command_list = {"/help":"classes.commands.help", "/gamemode":"classes.commands.gamemode", "/stop":"classes.command.stop"}
 
     def launch_gui(self):
         """Launch the server GUI, with command entry, player list..."""
@@ -143,7 +143,7 @@ class MinecraftServer(object):
                     with open("Server/classes/temp/command_executor.py", "w") as file:
                         file.write("import {0} as cmd".format(path))
                     import classes.temp.command_executor as ce
-                    ce.cmd.main(self, runner, " ".join(splited[1:]))
+                    ce.cmd.main(self, runner, splited[1:])
                 except KeyError:
                     self.log_warning("Unknow command. Type \"/help\" for help.")
             else:
