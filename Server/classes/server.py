@@ -144,6 +144,7 @@ class MinecraftServer(object):
                         file.write("import {0} as cmd".format(path))
                     import classes.temp.command_executor as ce
                     ce.cmd.main(self, runner, splited[1:])
+                    del(ce)
                 except KeyError:
                     self.log_warning("Unknow command. Type \"/help\" for help.")
             else:
