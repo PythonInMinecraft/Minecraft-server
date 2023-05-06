@@ -58,36 +58,12 @@ class MinecraftServer(object):
 
     def main_loop(self):
         """Main loop of the server"""
-        self.server_socket.listen(self.MAX_PLAYER)
+        self.server_socket.listen(self.MAX_PLAYER+1)
+        
         while True:
-            if len(self.online) <= self.MAX_PLAYER:
-                client_socket, client_address = self.server_socket.accept()
-                self.log("Connection from {0}.".format(client_address))
-                self.online.append(client_address)
-                response = "Version : {0}. There are {1} player online for {2} max.".format(self.VERSION, len(self.online), self.MAX_PLAYER)
-                client_socket.sendall(response.encode('utf-8'))
-                client_socket.close()
-                self.online.remove(client_address)
-
-            else:   #If the server is full.
-
-                ###################################################
-                #client_socket, client_address = self.server_socket.accept()
-                #self.log("Connection from {0}.".format(client_address))
-                #self.log_warning("The server is full !!!")
-                #response = "The server is full !"
-                #client_socket.sendall(response.encode('utf-8'))
-                #client_socket.close()
-                #self.log_warning("Connection denied.")
-                ##################################################
-
-                #                    OR
-
-                ##################################################
-                pass            #server full --> ignore and don't accept
-                ##################################################
-
-
+            
+            
+                           
     def stop(self):
         """Stop the server."""
         import time
@@ -300,14 +276,28 @@ class MinecraftServer(object):
 #    def event(self, event):
 #        """???"""
 
-class MinecraftSocketServerGestionner(object):
-    """The gestionner of the sockets of the server"""
-    def __init__(self, addr="", port=25565):
+class EventGestionner(object):
+    """The gestionner of the events of the server"""
+    def __init__(self, socket):
         """Constructor"""
-        self.addr = addr
-        self.port = port
-        self.socket = socket(AF_INET, SOCK_STREAM)      #Good args ?
+        self.socket = socket
 
-    def bind(self):
-        """Bind the server"""
-        self.socket.bind((self.addr, self.port))
+    def on_connect(self, addr, socket):
+        """When a player is connecting"""
+        if len(self.online) <= self.MAX_PLAYER:
+                client_socket, client_address = self.server_socket.accept()
+                self.log("Connection from {0}.".format(client_address))
+                self.online.append(client_address)
+                response = "Version : {0}. There are {1} player online for {2} max.".format(self.VERSION, len(self.online), self.MAX_PLAYER)
+                client_socket.sendall(response.encode('utf-8'))
+                client_socket.close()
+                self.online.remove(client_address)
+
+            else:   #If the server is full.
+                client_socket, client_address = self.server_socket.accept()
+                self.log("Connection from {0}.".format(client_address))
+                self.log_warning("The server is full !!!")
+                response = "The server is full !"
+                client_socket.sendall(response.encode('utf-8'))
+                client_socket.close()
+                self.log_warning("Connection denied.")
