@@ -61,7 +61,8 @@ class MinecraftServer(object):
         self.server_socket.listen(self.MAX_PLAYER+1)
         
         while True:
-            ...
+            cl_sock, cl_addr = self.server_socket.accept()
+            self.event = EventGestionner(cl_addr, cl_sock)
             
     def client_thread(self, addr, sock):
         "The thread for the client"
@@ -285,7 +286,7 @@ class EventGestionner(object):
         """Constructor"""
         self.socket = socket
 
-    def on_connect(self, addr, socket):
+    def on_connect(s, addr, socket):
         """When a player is connecting"""
         if len(self.online) <= self.MAX_PLAYER:
                 client_socket, client_address = self.server_socket.accept()
