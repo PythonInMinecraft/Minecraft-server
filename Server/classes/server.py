@@ -61,7 +61,10 @@ class MinecraftServer(object):
         self.server_socket.listen(self.MAX_PLAYER+1)
         
         while True:
+            ...
             
+    def client_thread(self, addr, sock):
+        "The thread for the client"
             
                            
     def stop(self):
