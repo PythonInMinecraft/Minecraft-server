@@ -58,15 +58,47 @@ class MinecraftServer(object):
 
     def main_loop(self):
         """Main loop of the server"""
-        self.server_socket.listen(self.MAX_PLAYER+1)
-        
+        self.server_socket.listen(self.MAX_PLAYER+2)
+        self.c_t = []
         while True:
             cl_sock, cl_addr = self.server_socket.accept()
-            self.event = EventGestionner(cl_addr, cl_sock)
+            t = Thread(target=self.client_thread(cl_addr, cl_socket))
+            t.start()
+            #self.event = EventGestionner(cl_addr, cl_sock)
             
     def client_thread(self, addr, sock):
         "The thread for the client"
-            
+            request = self.server_socket.recv(1024)
+            if request[:5] == "\xfe\xfd\x00\x0b\x01":
+                #return the ping info
+                msg = """{
+  "version": {
+    "name": "1.17.1",
+    "protocol": 756
+  },
+  "players": {
+    "max": 20,
+    "online": 3,
+    "sample": [
+      {
+        "name": "Player1",
+        "id": "00000000-0000-0000-0000-000000000001"
+      },
+      {
+        "name": "Player2",
+        "id": "00000000-0000-0000-0000-000000000002"
+      },
+      {
+        "name": "Player3",
+        "id": "00000000-0000-0000-0000-000000000003"
+      }
+    ]
+  },
+  "description": {
+    "text": "A Minecraft Server"
+  }
+}"""
+            sock.sendall(bytes(msg, "utf-8"))
                            
     def stop(self):
         """Stop the server."""
