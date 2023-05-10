@@ -1,9 +1,14 @@
 """A Minecraft server in python 3"""
+# IMPORTS
 from classes.server import MinecraftServer as Server
 
+# INDICATIVE INFO DON'T TOUCH
+# the version of this app. Don't touch this, it is for debug info
 VERSION = "Alpha-dev"
-CLIENT_VERSION = "1.19.4"
+# the Minecraft version. don't touch except if the protocoo of your version is the same as the MC version 1.17.1
+CLIENT_VERSION = "1.17.1"
 
+# MAIN
 if __name__ == "__main__":
     print("""
     _________________________________________________
