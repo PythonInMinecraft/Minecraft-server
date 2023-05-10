@@ -32,6 +32,7 @@ class MinecraftServer(object):
         Arg:
         - version : the version of the server"""
         self.VERSION = version
+        self.motd = "A Minecraft server"
         self.MAX_PLAYER = 20        #To change
         self.online = []    #Online players list
         import time
@@ -73,12 +74,12 @@ class MinecraftServer(object):
                 #return the ping info
                 msg = """{
   "version": {
-    "name": "1.17.1",
+    "name": "{0}",
     "protocol": 756
   },
   "players": {
-    "max": 20,
-    "online": 3,
+    "max": {1},
+    "online": {2},
     "sample": [
       {
         "name": "Player1",
@@ -97,7 +98,7 @@ class MinecraftServer(object):
   "description": {
     "text": "A Minecraft Server"
   }
-}"""
+}""".format(self.VERSION, self.MAX_PLAYER, 4)
             sock.sendall(bytes(msg, "utf-8"))
                            
     def stop(self):
