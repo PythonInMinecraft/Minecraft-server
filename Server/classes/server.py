@@ -98,7 +98,7 @@ class MinecraftServer(object):
   "description": {
     "text": "A Minecraft Server"
   }
-}""".format(self.VERSION, self.MAX_PLAYER, 4)
+}""".format(self.VERSION, self.MAX_PLAYER, len(self.online))
             sock.sendall(bytes(msg, "utf-8"))
                            
     def stop(self):
