@@ -82,15 +82,15 @@ class MinecraftServer(object):
     "online": {2},
     "sample": [
       {
-        "name": "Player1",
-        "id": "00000000-0000-0000-0000-000000000001"
+        "name": "{3}",
+        "id": "{4}"
       },
       {
-        "name": "Player2",
-        "id": "00000000-0000-0000-0000-000000000002"
+        "name": "{5}",
+        "id": "{6}"
       },
       {
-        "name": "Player3",
+        "name": "...",
         "id": "00000000-0000-0000-0000-000000000003"
       }
     ]
@@ -98,7 +98,7 @@ class MinecraftServer(object):
   "description": {
     "text": "A Minecraft Server"
   }
-}""".format(self.VERSION, self.MAX_PLAYER, len(self.online))
+}""".format(self.VERSION, self.MAX_PLAYER, len(self.online), self.online[0][0, self.online[0][1], self.online[1][0], self.online[1][1])
             sock.sendall(bytes(msg, "utf-8"))
                            
     def stop(self):
