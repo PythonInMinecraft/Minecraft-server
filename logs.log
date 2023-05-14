@@ -180,3 +180,23 @@
 [17:31:22] [INFO] : Connection from ('127.0.0.1', 49804).
 [17:31:23] [INFO] : Connection from ('127.0.0.1', 49805).
 [17:31:24] [INFO] : Connection from ('127.0.0.1', 49807).
+[11:15:00] [INFO] : #Sun May 14 11:15:00 2023
+[11:15:00] [INFO] : _____________________________________
+[11:15:00] [INFO] : Starting Server class...
+[11:15:00] [INFO] : _____________________________________
+[11:15:00] [INFO] : Server created.
+[11:15:00] [WARN] : This version is a developpement version ; launch it will maybe cause some issues.
+[11:15:01] [INFO] : No worlds found, creating 3 new...
+[11:15:01] [INFO] : Starting creation of the world {0}...
+[11:15:01] [INFO] : Generating world world_o
+[11:15:01] [WARN] : You are overwriting existing data if the world already exists !
+[11:15:01] [WARN] : Method doesn't be coded.
+[11:15:01] [INFO] : Starting creation of the world {0}...
+[11:15:01] [INFO] : Generating world nether_n
+[11:15:01] [WARN] : You are overwriting existing data if the world already exists !
+[11:15:01] [WARN] : Method doesn't be coded.
+[11:15:01] [INFO] : Starting creation of the world {0}...
+[11:15:01] [INFO] : Generating world end_e
+[11:15:01] [WARN] : You are overwriting existing data if the world already exists !
+[11:15:01] [WARN] : Method doesn't be coded.
+[11:15:01] [INFO] : Main loop started...

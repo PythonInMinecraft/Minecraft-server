@@ -63,16 +63,16 @@ class MinecraftServer(object):
         self.c_t = []
         while True:
             cl_sock, cl_addr = self.server_socket.accept()
-            t = Thread(target=self.client_thread(cl_addr, cl_socket))
+            t = Thread(target=self.client_thread(cl_addr, cl_sock))
             t.start()
             #self.event = EventGestionner(cl_addr, cl_sock)
             
     def client_thread(self, addr, sock):
         "The thread for the client"
-            request = self.server_socket.recv(1024)
-            if request[:5] == "\xfe\xfd\x00\x0b\x01":
-                #return the ping info
-                msg = """{
+        request = self.server_socket.recv(1024)
+        if request[:5] == "\xfe\xfd\x00\x0b\x01":
+            #return the ping info
+            msg = """{
   "version": {
     "name": "{0}",
     "protocol": 756
@@ -98,7 +98,7 @@ class MinecraftServer(object):
   "description": {
     "text": "A Minecraft Server"
   }
-}""".format(self.VERSION, self.MAX_PLAYER, len(self.online), self.online[0][0, self.online[0][1], self.online[1][0], self.online[1][1])
+}""".format(self.VERSION, self.MAX_PLAYER, len(self.online), self.online[0][0], self.online[0][1], self.online[1][0], self.online[1][1])
             sock.sendall(bytes(msg, "utf-8"))
                            
     def stop(self):
@@ -319,8 +319,9 @@ class EventGestionner(object):
         """Constructor"""
         self.socket = socket
 
-    def on_connect(s, addr, socket):
-        """When a player is connecting"""
+    def on_connect(s, self, addr, socket):
+        """When a player is connecting
+        !!! arg self is the server instance"""
         if len(self.online) <= self.MAX_PLAYER:
                 client_socket, client_address = self.server_socket.accept()
                 self.log("Connection from {0}.".format(client_address))
@@ -330,11 +331,11 @@ class EventGestionner(object):
                 client_socket.close()
                 self.online.remove(client_address)
 
-            else:   #If the server is full.
-                client_socket, client_address = self.server_socket.accept()
-                self.log("Connection from {0}.".format(client_address))
-                self.log_warning("The server is full !!!")
-                response = "The server is full !"
-                client_socket.sendall(response.encode('utf-8'))
-                client_socket.close()
-                self.log_warning("Connection denied.")
+        else:   #If the server is full.
+            client_socket, client_address = self.server_socket.accept()
+            self.log("Connection from {0}.".format(client_address))
+            self.log_warning("The server is full !!!")
+            response = "The server is full !"
+            client_socket.sendall(response.encode('utf-8'))
+            client_socket.close()
+            self.log_warning("Connection denied.")
