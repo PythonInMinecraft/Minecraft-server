@@ -73,7 +73,7 @@ class MinecraftServer(object):
         ...
         exit(0)
     
-    def get_cmd(self, target):
+    def get_cmd(self, target:str):
         """Get all the commands."""
         if target == "CONSOLE":
             self.command_list = {"/help":"classes.commands.help", "/stop":"classes.commands.stop"}
@@ -129,7 +129,7 @@ class MinecraftServer(object):
 
         self.execute_command(cmd, "CONSOLE")
 
-    def execute_command(self, command, runner):
+    def execute_command(self, command:str, runner:str):
         """Run a command.
         Arguments :
         - command : the command (str)
@@ -151,7 +151,7 @@ class MinecraftServer(object):
                 self.log_warning("This isn't a command !")
                 self.send_to_chat(command, runner)  #send to chat
 
-    def send_to_chat(self, msg, entity):
+    def send_to_chat(self, msg:str, entity:str):
         """Send a message in the chat.
         Arguments:
         - msg : the message (str)
@@ -215,7 +215,7 @@ class MinecraftServer(object):
         """Load the worlds of the server
         THIS SECTION MUST HAVE CONTRIBUTORS !"""
         
-    def create_world(self, world_name, type="o"):
+    def create_world(self, world_name:str, type="o"):
         """Create a new world.
         Arguments:
         - world_name : the name of the world (str)
@@ -234,7 +234,7 @@ class MinecraftServer(object):
         self.generate(name)
         #write the world here.
     
-    def generate(self, world):
+    def generate(self, world:str):
         """Generate the world.
         BE CAREFUL ! THIS METHOD OVERWRITE EXISTING DATA !
         Argument :
@@ -249,7 +249,7 @@ class MinecraftServer(object):
                 \_ Server().generate()""")
 
         
-    def fatal_error(self, reason):
+    def fatal_error(self, reason:str):
         """Raise a fatal error and a crash report.
         Argument :
         - reason : the reason of the crash."""
@@ -288,7 +288,7 @@ class MinecraftServer(object):
         for i in self.return_worlds():
             Saver(file="worlds/overworld.mcpysrv", data=self.worlds[i])
 
-    def log(self, basemsg):
+    def log(self, basemsg:str):
         """Log a message.
         Argument :
         - basemsg : the message to log."""
@@ -313,7 +313,7 @@ class MinecraftServer(object):
             with open("logs.log", "w") as logfile:
                 logfile.write(msg)
 
-    def log_error(self, basemsg):
+    def log_error(self, basemsg:str):
         """Log an error.
         Argument :
         - basemsg : the error to log."""
@@ -338,7 +338,7 @@ class MinecraftServer(object):
             with open("logs.log", "w") as logfile:
                 logfile.write(msg)
 
-    def log_warning(self, basemsg):
+    def log_warning(self, basemsg:str):
         """Log a warning.
         Argument :
         - basemsg : the warning to log."""

@@ -1,0 +1,17 @@
+
+[18:16:36] [INFO] : #Wed Jun 14 18:16:36 2023
+[18:16:36] [INFO] : _____________________________________
+[18:16:36] [INFO] : Starting Server class...
+[18:16:36] [INFO] : _____________________________________
+[18:16:36] [WARN] : This version is a developpement version ; launch it will maybe cause some issues.
+[18:16:36] [INFO] : No worlds found, creating 3 new...
+[18:16:36] [WARN] : Code not found, skipping...
+[18:16:59] [INFO] : CONSOLE issued server command : gamemode
+[18:16:59] [WARN] : This isn't a command !
+[18:17:03] [INFO] : CONSOLE issued server command : help
+[18:17:03] [WARN] : This isn't a command !
+[18:17:07] [INFO] : CONSOLE issued server command : /help
+[18:17:07] [INFO] : Help showed to CONSOLE for path .
+[18:17:08] [INFO] : ____CONSOLE HELP MENU____
+[18:17:08] [INFO] : - /help <path> --> show the help of the determined path
+[18:17:08] [INFO] : ...
