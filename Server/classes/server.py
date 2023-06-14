@@ -31,7 +31,10 @@ from classes.filing.open_game import Open as Opener
 class MinecraftServer(object):
     """Class of the Minecraft server"""
 
-    command_list = {}
+    #commands:(path, perm, console)
+    command_list = {"/help":("classes.commands.help", 0, True), 
+                    "/gamemode":("classes.commands.gamemode", 2, False), 
+                    "/stop":("classes.command.stop", 4, True)}
 
     def __init__(self, addr=""):
         """Constructor
@@ -266,7 +269,7 @@ class MinecraftServer(object):
         file = "crash_reports/crash_report_" + str(nb) + ".crash"
         with open(file, "w") as report:
             report.write("""# FATAL ERROR report ({0})
-            Please ipeb an issue on GitHub (https://github.com/PythonInMinecraft/Minecraft-Server).
+            Please open an issue on GitHub (https://github.com/PythonInMinecraft/Minecraft-Server).
             Reason of the crash :
             {1}
             Post error action : stopping the server (FATAL ERROR)
