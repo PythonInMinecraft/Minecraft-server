@@ -266,12 +266,12 @@ class MinecraftServer(object):
         file = "crash_reports/crash_report_" + str(nb) + ".crash"
         with open(file, "w") as report:
             report.write("""# FATAL ERROR report ({0})
-            If this error isn't normal, create an issue on GitHub.
+            Please ipeb an issue on GitHub (https://github.com/PythonInMinecraft/Minecraft-Server).
             Reason of the crash :
             {1}
             Post error action : stopping the server (FATAL ERROR)
-            This error isn't an enormous error, in this case the server will be stopped without warning and logs.
-            --> An antecedent maybe created the error.
+            This error is not an unknow error, in this case the server will be stopped without warning and logs.
+            --> Something of knowed maybe created the error. Please check the doc.
             IS THE SERVER MODED ? Maybe not, this version isn't a base-modified version. If you modified the server, 
             The PythoninMinecraft organisation can't do anything.""".format(asctime(localtime(time())), 
                                                                             reason))
