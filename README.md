@@ -1,7 +1,7 @@
 # Minecraft-server
 A Minecraft custom server in Python 3 (experimental, help required)
-## Depend
-Depends : 
+## Dependencies 
+Dependencies : 
 - YML Lib (see my repo for details)
 - time
 - os
