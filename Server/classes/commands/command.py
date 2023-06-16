@@ -2,11 +2,23 @@
 
 class CommandExecutor(object):
     #commands:(path, perm, console)
-    command_list = {"/help":("classes.commands.help", 0, True), 
-                    "/gamemode":("classes.commands.gamemode", 2, False), 
-                    "/stop":("classes.command.stop", 4, True)}
-    def onCommand(self, sender:str, command:str):
+    command_list = {"/help":(0, True), "/gamemode":(2, False), "/stop":(4, True)}
+    def onCommand(self, sender:str, command:str, server:object):
+        cmd = command.split()
+        base_cmd = cmd[0]
+        try:
+            cmd_perm = self.command_list[base_cmd]
+            if base_cmd == "/help":
+                if help(sender, " ".join(cmd[1:])):
+                    server.log("Command executed.")
+                else:
+                    server.log("An internal error occured while performing this command. Please check the logs for details.")
+        except KeyError:
+            server.log_error("Unknow command. Please type \"/help\" for help.")
+
+    def perform(self, command, sender, args):
         ...
+        
 
     def help(self, sender:str, arg:str, server:object):
         """On command help"""

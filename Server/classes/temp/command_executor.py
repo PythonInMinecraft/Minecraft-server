@@ -1,1 +1,1 @@
-import classes.commands.help as cmd
+import classes.commands.stop as cmd

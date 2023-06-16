@@ -15,3 +15,11 @@
 [18:17:08] [INFO] : ____CONSOLE HELP MENU____
 [18:17:08] [INFO] : - /help <path> --> show the help of the determined path
 [18:17:08] [INFO] : ...
+[18:10:07] [INFO] : #Fri Jun 16 18:10:07 2023
+[18:10:07] [INFO] : _____________________________________
+[18:10:07] [INFO] : Starting Server class...
+[18:10:07] [INFO] : _____________________________________
+[18:10:07] [WARN] : This version is a developpement version ; launch it will maybe cause some issues.
+[18:10:14] [INFO] : CONSOLE issued server command : /stop
+[18:10:14] [INFO] : Stopping the server with the command runned by CONSOLE
+[18:10:14] [INFO] : Stoping the server...
