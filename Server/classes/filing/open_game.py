@@ -15,7 +15,7 @@ class Open(object):
         """read and  decode the world file's data"""
         curent_value = ""
         self.state = 0       #self.state=0 : reading chunk id ; self.state=1 : reading chunk blocks
-        for l, item in enumerate(self.data):
+        for self.char, item in enumerate(self.data):
             #for every characters in self.data (the file)
             if item == ";":
                 self.next()
@@ -23,14 +23,14 @@ class Open(object):
             elif item == "{":
                 if self.state == 0:
                     self.state = 1
-                    ...
+                    self.next()
                 else:
                     raise LookupError("An error occured while decoding the file {0} : chunk opened in an other chunk (char {1}).".format(self.file, l))
                 
             elif item == "}":
                 if self.state == 1:
                     self.state = 0
-                    ...
+                    self.next()
                 else:
                     raise LookupError("An error occured while decoding the file {0} : trying to stop reading chunk without be in a chunk (char {1}).".format(self.file, l))
                 
