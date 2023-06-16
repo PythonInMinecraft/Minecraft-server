@@ -6,10 +6,10 @@ class Open(object):
 
     def __init__(self, file):
         """Open a world"""
-        file = file
+        self.file = file
+        self.decoded = None
         with open(file, "r") as file:
             self.data = file.read()
-            self.end = self.read()
         
     def read(self):
         """read and  decode the world file's data"""
