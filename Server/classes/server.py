@@ -31,11 +31,6 @@ from classes.filing.open_game import Open as Opener
 class MinecraftServer(object):
     """Class of the Minecraft server"""
 
-    #commands:(path, perm, console)
-    command_list = {"/help":("classes.commands.help", 0, True), 
-                    "/gamemode":("classes.commands.gamemode", 2, False), 
-                    "/stop":("classes.command.stop", 4, True)}
-
     def __init__(self, addr=""):
         """Constructor
         Arg:
