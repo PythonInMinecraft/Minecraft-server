@@ -123,7 +123,7 @@ class MinecraftServer(object):
         Arguments:
         - world_name : the name of the world (str)
         - type : can be "o"(overworld), "n"(nether) or "e"(ender). Default : "o"."""
-        self.log("Starting creation of the world {0}...")
+        self.log("Starting creation of the world {0}...".format(world_name))
         if not(type == "o" or type == "n" or type == "e"):      #check type
             l = "The type of the world {0} isn't correct.".format(world_name)
             self.log_error(l)
