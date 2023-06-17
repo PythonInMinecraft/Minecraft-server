@@ -136,7 +136,7 @@ class MinecraftServer(object):
         self.worlds.append(name)
         gen = G()
         self.log("Generating the world with voidgenerator()...")
-        world = gen.void_generator()
+        world = gen.void_generator(type)
         self.log("Done !")
         saver = Saver("Server/worlds/" + name + ".mcpysrv", world)
         saver.write()
