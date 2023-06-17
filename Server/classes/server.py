@@ -14,6 +14,7 @@ try:
 except ModuleNotFoundError:
     try:
         import classes.errors.errors as errors
+        from classes.filing.generator import Generator as G
     except:
         raise RuntimeError("FATAL ERROR. PLEASE REINSTALL THIS REPO OR SET A NEW ISSUE ON GITHUB !")
     raise errors.DependenciesError("""You have to have this librairies installed on your computer :
@@ -22,6 +23,7 @@ except ModuleNotFoundError:
 --> socket
 --> and more""")
 # Internals files
+from classes.filing.generator import Generator as G
 from classes.filing.save_game import Save as Saver
 from classes.filing.open_game import Open as Opener
 
@@ -46,7 +48,7 @@ class MinecraftServer(object):
             self.create_world(world_name="world", type="o")
             self.create_world(world_name="nether", type="n")
             self.create_world(world_name="end", type="e")
-        self.stop()
+        #self.stop()
 
     def stop(self):
         """Stop the server."""
@@ -127,22 +129,12 @@ class MinecraftServer(object):
                       \_ #check_type section.""")
         name = world_name + "_" + type
         self.worlds.append(name)
-        self.generate(name)
-        #write the world here.
-    
-    def generate(self, world):
-        """Generate the world.
-        BE CAREFUL ! THIS METHOD OVERWRITE EXISTING DATA !
-        Argument :
-        - world : the world to generate (str)"""
-        type = world[-1:]
-        self.log("Generating world {0}".format(world))
-        self.log_warning("You are overwriting existing data if the world already exists !")
-        self.log_warning("Method doesn't be coded.")
-        self.fatal_error("""This method doesn't be coded.
-        At:
-            - Server/classes/server.py
-                \_ Server().generate()""")
+        gen = G()
+        self.log("Generating the world with voidgenerator()...")
+        world = gen.void_generator()
+        self.log("Done !")
+        saver = Saver("worlds/" + name + ".mcpysrv", world)
+        saver.write()
 
         
     def fatal_error(self, reason):
