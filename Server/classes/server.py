@@ -42,13 +42,16 @@ class MinecraftServer(object):
         #self.socket = MinecraftSocketServerGestionner(addr=self.addr, port=25565)
         self.log_warning("This version is a developpement version ; launch it will maybe cause some issues.")
         self.worlds = self.return_worlds()
-        self.worlds_data = {}       #This dico is : {"world_name":<pythondata>, ...}
         if len(self.worlds) == 0:
             self.log("No worlds found, creating 3 new...")
             self.create_world(world_name="world", type="o")
             self.create_world(world_name="nether", type="n")
             self.create_world(world_name="end", type="e")
-        #self.stop()
+        
+        self.worlds_data = {}
+        self.load_worlds()
+        
+        self.stop()
 
     def stop(self):
         """Stop the server."""
@@ -110,8 +113,10 @@ class MinecraftServer(object):
         self.load_worlds()
 
     def load_worlds(self):
-        """Load the worlds of the server
-        THIS SECTION MUST HAVE CONTRIBUTORS !"""
+        """Load the worlds of the server"""
+        for i in self.worlds:
+            opener = Opener("Server/worlds/" + i)
+            self.worlds_data[i] = opener.read()
         
     def create_world(self, world_name, type="o"):
         """Create a new world.
@@ -133,7 +138,7 @@ class MinecraftServer(object):
         self.log("Generating the world with voidgenerator()...")
         world = gen.void_generator()
         self.log("Done !")
-        saver = Saver("worlds/" + name + ".mcpysrv", world)
+        saver = Saver("Server/worlds/" + name + ".mcpysrv", world)
         saver.write()
 
         

@@ -20,10 +20,10 @@ class Save(object):
         for chunk in data:
             #Save a chunk (16/16/16 blocks)
             coord_chunk = chunk[0]        #C is a dictionnary : c is like this : {"x":00, "y":00, "z":00}
-            final += "{0};{1};{2}{".format(coord_chunk["x"], coord_chunk["y"], coord_chunk["z"])
+            final += "{0};{1};{2}".format(coord_chunk["x"], coord_chunk["y"], coord_chunk["z"]) + "{"
             for block in chunk[1]:
                 #Save a block
-                final += self.BLOCKS[block]
+                final += str(self.BLOCKS[block])
                 final += ";"
             final = final[:-1]
             final += "};"
