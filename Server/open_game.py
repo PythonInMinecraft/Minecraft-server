@@ -1,5 +1,7 @@
 """Open a world"""
 
+import os
+
 class Open(object):
     """Open a world. File extention should be .mcpysrv"""
     BLOCKS = {0:"minecraft:air", 1:"minecraft:grass_block", 2:"minecraft:dirt", 3:"minecraft:stone", 4:"minecraft:cobble_stone"}
@@ -13,6 +15,7 @@ class Open(object):
         
     def read(self):
         """read and  decode the world file's data"""
+        os.chdir(os.getcwd + "\\Server\\worlds")
         self.curent_value = ""
         self.final = []
         self.chunk_actu = ()
@@ -52,13 +55,13 @@ class Open(object):
         if self.state == 0:
             if self.coord_state == "x":
                 self.chunk_dic["x"] = self.curent_value
-                self.chunk_dic = "y"
+                self.coord_state = "y"
             elif self.coord_state == "y":
                 self.chunk_dic["y"] = self.curent_value
-                self.chunk_dic = "z"
+                self.coord_state = "z"
             elif self.coord_state == "z":
                 self.chunk_dic["z"] = self.curent_value
-                self.chunk_dic = "x"
+                self.coord_state = "x"
             else:
                 raise LookupError("Error while decoding chunk id. Please don't touch to the world files.")
             self.curent_value = ""
@@ -70,7 +73,7 @@ class Open(object):
 
     def return_data(self):
         """Return the data rode."""
-        ...
+        return
 
 if __name__ == "__main__":
     exit(0)
