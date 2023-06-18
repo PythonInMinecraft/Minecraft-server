@@ -115,7 +115,7 @@ class MinecraftServer(object):
     def load_worlds(self):
         """Load the worlds of the server"""
         for i in self.worlds:
-            opener = Opener("Server/worlds/" + i + ".mcpysrv")
+            opener = Opener("worlds/" + i + ".mcpysrv")
             self.worlds_data[i] = opener.read()
         
     def create_world(self, world_name, type="o"):
