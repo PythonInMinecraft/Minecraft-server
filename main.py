@@ -1,5 +1,5 @@
 """A Minecraft server in python 3"""
-from classes.server import MinecraftServer as Server
+from Server.server import MinecraftServer as Server
 
 VERSION = "Alpha-dev"
 CLIENT_VERSION = "1.19.4"

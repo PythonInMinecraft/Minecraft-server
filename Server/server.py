@@ -13,8 +13,8 @@ try:
     from socket import *
 except ModuleNotFoundError:
     try:
-        import classes.errors.errors as errors
-        from classes.filing.generator import Generator as G
+        import Server.no_interrract.errors.errors as errors
+        from Server.no_interrract.world.generator import Generator as G
     except:
         raise RuntimeError("FATAL ERROR. PLEASE REINSTALL THIS REPO OR SET A NEW ISSUE ON GITHUB !")
     raise errors.DependenciesError("""You have to have this librairies installed on your computer :
@@ -23,9 +23,9 @@ except ModuleNotFoundError:
 --> socket
 --> and more""")
 # Internals files
-from classes.filing.generator import Generator as G
-from classes.filing.save_game import Save as Saver
-from classes.filing.open_game import Open as Opener
+from Server.no_interrract.world.generator import Generator as G
+from Server.save_game import Save as Saver
+from Server.open_game import Open as Opener
 
 class MinecraftServer(object):
     """Class of the Minecraft server"""
@@ -115,7 +115,7 @@ class MinecraftServer(object):
     def load_worlds(self):
         """Load the worlds of the server"""
         for i in self.worlds:
-            opener = Opener("Server/worlds/" + i)
+            opener = Opener("Server/worlds/" + i + ".mcpysrv")
             self.worlds_data[i] = opener.read()
         
     def create_world(self, world_name, type="o"):
@@ -129,7 +129,7 @@ class MinecraftServer(object):
             self.log_error(l)
             self.fatal_error("""Bad world type.
             At:
-                - Server/classes/server.py
+                - Server/server.py
                     \_ Server().create_world()
                       \_ #check_type section.""")
         name = world_name + "_" + type
