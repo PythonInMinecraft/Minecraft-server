@@ -40,6 +40,9 @@ class Open(object):
                 if self.state == 1:
                     self.state = 0
                     self.next()
+                    self.chunk_actu.append(self.chunk_blocs)
+                    self.final.append(self.chunk_actu)
+                    self.chunk_actu = ()
                 else:
                     raise LookupError("An error occured while decoding the file {0} : trying to stop reading chunk without be in a chunk (char {1}).".format(self.file, self.char))
                 
@@ -49,6 +52,8 @@ class Open(object):
             else:
                 self.curent_value += item
                 continue
+        
+        return self.final
             
     def next(self):
         """Go to the next value and apply"""
@@ -73,7 +78,7 @@ class Open(object):
 
     def return_data(self):
         """Return the data rode."""
-        return
+        return self.final
 
 if __name__ == "__main__":
     exit(0)
