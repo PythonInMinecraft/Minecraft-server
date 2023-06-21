@@ -10,17 +10,12 @@ class Open(object):
     def __init__(self, file):
         """Open a world"""
         self.file = file
-        self.decoded = None
-        try:
-            with open(file, "r") as file:
-                self.data = file.read()
-        except FileNotFoundError:
-            print("Please wait...")
-            sleep(1)
-            self.__init__(file)
+        with open(file, "r") as file:
+            self.data = file.read()
         
     def read(self):
         """read and  decode the world file's data"""
+        self.init_dir = os.getcwd()
         os.chdir(os.getcwd() + "\\Server\\worlds")
         self.curent_value = ""
         self.final = []
@@ -58,6 +53,8 @@ class Open(object):
             else:
                 self.curent_value += item
                 continue
+                
+        os.chdir(self.init_dir)
         
         return self.final
             
