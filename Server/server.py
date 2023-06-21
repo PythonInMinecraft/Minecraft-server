@@ -76,7 +76,7 @@ class MinecraftServer(object):
             for i in dir:
                 #For every items in the directory
                 if os.path.isfile(path + i) and i[-8:] == ".mcpysrv":
-                    files.append(i)
+                    files.append(i[:-8])
         elif filter == "o":
             #With filter "overworld" (normal minecraft world)
             dir = os.listdir(path)
@@ -115,7 +115,7 @@ class MinecraftServer(object):
     def load_worlds(self):
         """Load the worlds of the server"""
         for i in self.worlds:
-            opener = Opener("worlds/" + i + ".mcpysrv")
+            opener = Opener("Server/worlds/" + i + ".mcpysrv")
             self.worlds_data[i] = opener.read()
         
     def create_world(self, world_name, type="o"):
@@ -123,7 +123,7 @@ class MinecraftServer(object):
         Arguments:
         - world_name : the name of the world (str)
         - type : can be "o"(overworld), "n"(nether) or "e"(ender). Default : "o"."""
-        self.log("Starting creation of the world {0}...")
+        self.log("Starting creation of the world {0}...".format(world_name))
         if not(type == "o" or type == "n" or type == "e"):      #check type
             l = "The type of the world {0} isn't correct.".format(world_name)
             self.log_error(l)

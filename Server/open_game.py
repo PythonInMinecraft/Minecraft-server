@@ -1,6 +1,7 @@
 """Open a world"""
 
 import os
+from time import *
 
 class Open(object):
     """Open a world. File extention should be .mcpysrv"""
@@ -10,15 +11,20 @@ class Open(object):
         """Open a world"""
         self.file = file
         self.decoded = None
-        with open(file, "r") as file:
-            self.data = file.read()
+        try:
+            with open(file, "r") as file:
+                self.data = file.read()
+        except FileNotFoundError:
+            print("Please wait...")
+            sleep(1)
+            self.__init__(file)
         
     def read(self):
         """read and  decode the world file's data"""
-        os.chdir(os.getcwd + "\\Server\\worlds")
+        os.chdir(os.getcwd() + "\\Server\\worlds")
         self.curent_value = ""
         self.final = []
-        self.chunk_actu = ()
+        self.chunk_actu = []
         self.chunk_dic = {}
         self.chunk_blocs = []
         self.coord_state = "x"
