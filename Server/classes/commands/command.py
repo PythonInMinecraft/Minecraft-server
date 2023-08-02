@@ -34,7 +34,7 @@ class CommandExecutor(object):
 
     def gamemode(self, target:str, source:str, gamemode:int, server:object):
         if not(target == "CONSOLE"):
-            dico_gm = {0:"survival", 1:"creative", 2:"adventure", 3:"spectator"}
+            dico_gm = {"0":"survival", "1":"creative", "2":"adventure", "3":"spectator"}
             server.log("Changing the gamemode of {0} to {1} by {2}.".format(target, dico_gm[gamemode], source))
             ...
             return True
