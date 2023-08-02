@@ -41,6 +41,9 @@ class MinecraftServer(object):
         #self.addr = (addr, 25565)   #Creating normal socket addr format
         #self.socket = MinecraftSocketServerGestionner(addr=self.addr, port=25565)
         self.log_warning("This version is a developpement version ; launch it will maybe cause some issues.")
+        self.debug_on = True
+        if self.debug_on:
+            self.log("Debug mode active")
         self.worlds = self.return_worlds()
         if len(self.worlds) == 0:
             self.log("No worlds found, creating 3 new...")
@@ -237,6 +240,26 @@ class MinecraftServer(object):
         else:
             with open("logs.log", "w") as logfile:
                 logfile.write(msg)
+                
+def log_debug(self, basemsg:str):
+        """Log a debug message.
+        Argument :
+        - basemsg : the message to log."""
+        if self.debug_on:
+            import time
+            t = time.asctime(time.localtime(time.time()))
+            PREFIX = "[{0}] [DEBUG] : ".format(t[-13:-5])
+            msg = PREFIX + basemsg
+            print(msg)
+            import os
+            if os.path.exists("logs.log"):
+                with open("logs.log", "r") as logfile:
+                    logs = logfile.read()
+                with open("logs.log", "w") as logfile:
+                    logfile.write(logs + "\n" + msg)
+            else:
+                with open("logs.log", "w") as logfile:
+                    logfile.write(msg)
         
 
 #class Listener(object):
