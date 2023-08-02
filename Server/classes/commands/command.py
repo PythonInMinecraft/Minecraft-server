@@ -9,7 +9,7 @@ class CommandExecutor(object):
         try:
             cmd_perm = self.command_list[base_cmd]
             if base_cmd == "/help":
-                if help(sender, " ".join(cmd[1:])):
+                if self.help(sender, " ".join(cmd[1:])):
                     server.log("Command executed.")
                 else:
                     server.log("An internal error occured while performing this command. Please check the logs for details.")
